@@ -45,6 +45,7 @@ var Juego1_2 =
          },
          create:function()
          {
+           alert("funciono  jajajaj");
            juego.physics.startSystem(Phaser.Physics.ARCADE);
            fondoDegra = new Phaser.Rectangle(0, 0,largo, altura);
            cielo = juego.add.tileSprite(0,0,juego.width,juego.height,'cielo');
