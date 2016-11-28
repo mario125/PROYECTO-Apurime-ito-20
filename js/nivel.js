@@ -25,6 +25,8 @@ var b_basico;
 var largo = screen.width;
 var altura = screen.height;
 
+
+
 var Nivel =
 {
   preload:function()
@@ -55,7 +57,7 @@ var Nivel =
   },
   create:function()
   {
-    
+
     juego.scale.pageAlignHorizontally = true;
     juego.scale.pageAlignVertically = true;
     juego.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;

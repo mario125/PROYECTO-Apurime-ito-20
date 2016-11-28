@@ -5,6 +5,7 @@
              var piso1;
              var piso2;
              var cholito1;
+             var Cholito2;
              var mochila;
              var basePrimal;
              var cursor;
@@ -36,6 +37,9 @@
              var tres;
              var cuatro;
              var cinco;
+
+
+
              var a = 0 ;
              var b = 0 ;
              var c = 0 ;
@@ -155,7 +159,8 @@ var Juego1_1 = {
            dos.input.enableDrag();
            dos.input.boundsRect = fondoDegra;
 
-         for (var i = 1; i <=2; i++) {
+         for (var i = 1; i <=2; i++)
+         {
                    var ran= Math.floor(Math.random()*4)+1;
 
                    if (ran==4&& b==0) {
@@ -380,12 +385,12 @@ var Juego1_1 = {
 
     },
 
-    PasarNivel:function(){
-    if (mochila.position.y==30) {
-      this.state.start('Juego1_2');
-
-
-    }
+    PasarNivel:function()
+    {
+      if (mochila.position.y==30)
+      {
+           this.state.start('Juego1_2');
+      }
   },
 
     choco_uno_dos:function(){
