@@ -112,15 +112,15 @@ var Juego1_2 = {
                Mipiso2=juego.add.sprite(juego.width-100,juego.height-250,'Mipiso');
 
                Mibarra_menu=juego.add.tileSprite(0,juego.height-100,juego.width,100,'Mibar_menu');
-               var ye = (barra_menu.position.y)+11;
-               var ex =(barra_menu.position.x)+4;
+               var ye = (Mibarra_menu.position.y)+11;
+               var ex =(Mibarra_menu.position.x)+4;
 
                Mib_atras            =this.add.button(ex,ye,'Mib_atras',this.Atras,this);
-               Mib_siguiente        =this.add.button(b_atras.position.x+64,ye,'Mib_siguiente',this.Siguiente,this);
-               Mib_home             =this.add.button(b_siguiente.position.x+64,ye,'Mib_home',null,this);
-               Mib_actualizar       =this.add.button(b_home.position.x+64,ye,'Mib_actualizar',null,this);
+               Mib_siguiente        =this.add.button(Mib_atras.position.x+64,ye,'Mib_siguiente',this.Siguiente,this);
+               Mib_home             =this.add.button(Mib_siguiente.position.x+64,ye,'Mib_home',null,this);
+               Mib_actualizar       =this.add.button(Mib_home.position.x+64,ye,'Mib_actualizar',null,this);
                Micholito_negro      =juego.add.tileSprite(juego.width-400,ye,64,64,'cholito_negro');
-               MiscroolBar          =juego.add.tileSprite(cholito_negro.position.x+50,ye+20,300,40,'MiscroolBar2');
+               MiscroolBar          =juego.add.tileSprite(Micholito_negro.position.x+50,ye+20,300,40,'MiscroolBar2');
 
                var base = Math.floor((Math.random() * 2) + 4);
 
