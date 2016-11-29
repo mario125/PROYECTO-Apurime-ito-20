@@ -108,8 +108,8 @@ var Juego1_3 = {
                Tcholito.animations.add('derecha', [5, 6, 7, 8], 8, true);
                Tcholito.animations.add('llora', [9], 10, true);
 
-              // Tpiso1=juego.add.sprite(-750,juego.height-250,'Tpiso');
-              // Tpiso2=juego.add.sprite(juego.width-100,juego.height-250,'Tpiso');
+               Tpiso1=juego.add.sprite(-750,juego.height-250,'Tpiso');
+               Tpiso2=juego.add.sprite(juego.width-100,juego.height-250,'Tpiso');
 
                Tbarra_menu=juego.add.tileSprite(0,juego.height-100,juego.width,100,'Tbar_menu');
                var ye = (Tbarra_menu.position.y)+11;
