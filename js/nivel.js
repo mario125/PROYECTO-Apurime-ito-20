@@ -277,7 +277,7 @@ var Nivel =
   },
   Basico:function()
   {
-    this.state.start('Juego1_3');
+    this.state.start('Juego1_1');
 
   },
   Avanzado:function()
