@@ -282,7 +282,7 @@ var Nivel =
   },
   Avanzado:function()
   {
-    alert("Abanzado");
+     this.state.start('Juego3_1');
   },
   Actualizar:function()
   {
