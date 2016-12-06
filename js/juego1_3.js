@@ -1,87 +1,95 @@
 
-var Ttiempo;
-var Tcielo;
-var TfondoDegra;
-var Tbarra_menu;
-var Tcholito;
+var TREtiempo;
+var TREcielo;
+var TREfondoDegra;
+var TREbarra_menu;
+var TREcholito;
 
-var Tb_atras      ;
-var Tb_siguiente  ;
-var Tb_home       ;
-var Tb_actualizar ;
-var Tcholito_negro;
-var TscroolBar    ;
+var TREb_atras      ;
+var TREb_siguiente  ;
+var TREb_home       ;
+var TREb_actualizar ;
+var TREcholito_negro;
+var TREscroolBar    ;
 
-var Tpiso1;
-var Tpiso2;
-var TbasePrimal;
+var TREpiso1;
+var TREpiso2;
+var TREbasePrimal;
 //PARAR  PISO AL   COLICIONAR  CON  BASE
-var Tparar1 = 0;
-var Tparar2 = 0;
-var Tespacio_piso2 = 0;
-var Tespacio_piso1 = 0;
-
-var Tuno;
-var Tdos;
-var Ttres;
-var Tcuatro;
-var Tcinco;
-var Tlapiz;
+var TREparar1 = 0;
+var TREparar2 = 0;
+var TREespacio_piso2 = 0;
+var TREespacio_piso1 = 0;
+var TREpunteroBaseDos=0;
+var TREuno;
+var TREdos;
+var TREtres;
+var TREcuatro;
+var TREcinco;
+var TRElapiz;
+var TRa=0;
+var TRb=0;
+var TRc=0;
+var TRd=0;
+var TRe=0;
 var e=0;
 var f=0;
 
+
 //PASAR BLOQUES
-var Tx1=0;
-var Tx2=0;
-var Tx3=0;
-var Tx4=0;
-var Tx5=0;
-var Tx6=0;
-var Txpuntero=50;
+var TREx1=0;
+var TREx2=0;
+var TREx3=0;
+var TREx4=0;
+var TREx5=0;
+var TREx6=0;
+var TRExpuntero=50;
 //CHACAN CON BASE PRIMAL
-var Tbaseprimal_secundario_uno=false;
-var Tbaseprimal_secundario_dos=false;
-var Tbaseprimal_secundario_tres=false;
-var Tbaseprimal_secundario_cuatro=false;
-var Tbaseprimal_secundario_cinco=false;
+var TREbaseprimal_secundario_uno=false;
+var TREbaseprimal_secundario_dos=false;
+var TREbaseprimal_secundario_tres=false;
+var TREbaseprimal_secundario_cuatro=false;
+var TREbaseprimal_secundario_cinco=false;
 
 //CHOCAR CON mochila
-var lapizPuntero=0;
+var PunteroNivel=0;
 
 //TEXTOS
-var Ttexto1;
-var Ttexto2;
+var TREtexto1;
+var TREtexto2;
+var TREtexto3;
+var TREtexto4;
 // VER  BASE  5  O 4
-var TpunteroBase5=5;
-var TpunteroBase4=4;
+var TREpunteroBase5=5;
+var TREpunteroBase4=4;
 
 
 
 var Juego1_3 = {
     preload:function()
     {
-               juego.load.image('Tcielo','img/degra.png');
-               juego.load.image('Tnuve','img/nuves.png');
-               juego.load.image('Tbar_menu','img/barra_menu.png');
-               juego.load.image('Tpiso','img/piso2.png');
+               juego.load.image('TREcielo','img/degra.png');
+               juego.load.image('TREnuve','img/nuves.png');
+               juego.load.image('TREbar_menu','img/barra_menu.png');
+               juego.load.image('TREpiso','img/piso2.png');
 
-               juego.load.spritesheet('Tcholito','img/sprite_comple2.png',70,185);
+               juego.load.spritesheet('TREcholito','img/sprite_comple2.png',70,185);
 
-               juego.load.spritesheet('Tlapiz','img/lapiz.png',60,60);
+               juego.load.spritesheet('TRElapiz','img/calculadora.png',60,60);
 
-               juego.load.image('Tcinco','img/Cinco.png');
-               juego.load.image('Tcuatro','img/Cuatro.png');
-               juego.load.image('Ttres','img/Tres.png');
-               juego.load.image('Tdos','img/Dos.png');
-               juego.load.image('Tuno','img/Uno.png');
+               juego.load.image('TREcinco','img/Cinco.png');
+               juego.load.image('TREcuatro','img/Cuatro.png');
+               juego.load.image('TREtres','img/Tres.png');
+               juego.load.image('TREdos','img/Dos.png');
+               juego.load.image('TREuno','img/Uno.png');
 
-               juego.load.image('Tb_atras','img/atras.png');
-               juego.load.image('Tb_siguiente','img/sig.png');
-               juego.load.image('Tb_actualizar','img/reanudar.png');
-               juego.load.image('Tb_home','img/home.png');
+               juego.load.image('TREb_atras','img/atras.png');
+               juego.load.image('TREb_siguiente','img/sig.png');
+               juego.load.image('TREb_actualizar','img/reanudar.png');
+               juego.load.image('TREb_home','img/home.png');
 
-               juego.load.image('Tcholito_negro','img/cholito_negro.png');
-               juego.load.image('TscroolBar2','img/barras/barra2.png');
+               juego.load.image('TREcholito_negro','img/cholito_negro.png');
+               juego.load.image('TREscroolBar2','img/barras/barra4.png');
 
     },
     create:function()
@@ -90,37 +98,37 @@ var Juego1_3 = {
 
 
                juego.physics.startSystem(Phaser.Physics.ARCADE);
-               TfondoDegra = new Phaser.Rectangle(0, 0,largo, altura);
-               Tcielo = juego.add.tileSprite(0,0,juego.width,juego.height,'Tcielo');
+               TREfondoDegra = new Phaser.Rectangle(0, 0,largo, altura);
+               TREcielo = juego.add.tileSprite(0,0,juego.width,juego.height,'TREcielo');
 
 
-               Tcholito=juego.add.sprite(40,100,'Tcholito');
-               Tlapiz=juego.add.sprite(50,juego.height/2-200,'Tlapiz')
-               Tlapiz.anchor.setTo(0.5);
-               Tlapiz.animations.add('anilapiz',[0,1,2],6,true);
-               Tlapiz.animations.add('stop',[2],20,true);
+               TREcholito=juego.add.sprite(40,100,'TREcholito');
+               TRElapiz=juego.add.sprite(50,juego.height/2-200,'TRElapiz')
+               TRElapiz.anchor.setTo(0.5);
+               TRElapiz.animations.add('anilapiz',[0,1,2],6,true);
+               TRElapiz.animations.add('stop',[2],20,true);
 
 
 
 
-               Tcholito.animations.add('izquierda', [0, 1, 2, 3], 8, true);
-               Tcholito.animations.add('stop', [4], 20, true);
-               Tcholito.animations.add('derecha', [5, 6, 7, 8], 8, true);
-               Tcholito.animations.add('llora', [9], 10, true);
+               TREcholito.animations.add('izquierda', [0, 1, 2, 3], 8, true);
+               TREcholito.animations.add('stop', [4], 20, true);
+               TREcholito.animations.add('derecha', [5, 6, 7, 8], 8, true);
+               TREcholito.animations.add('llora', [9], 10, true);
 
-               Tpiso1=juego.add.sprite(-750,juego.height-250,'Tpiso');
-               Tpiso2=juego.add.sprite(juego.width-100,juego.height-250,'Tpiso');
+               TREpiso1=juego.add.sprite(-750,juego.height-250,'TREpiso');
+               TREpiso2=juego.add.sprite(juego.width-100,juego.height-250,'TREpiso');
 
-               Tbarra_menu=juego.add.tileSprite(0,juego.height-100,juego.width,100,'Tbar_menu');
-               var ye = (Tbarra_menu.position.y)+11;
-               var ex =(Tbarra_menu.position.x)+4;
+               TREbarra_menu=juego.add.tileSprite(0,juego.height-100,juego.width,100,'TREbar_menu');
+               var ye = (TREbarra_menu.position.y)+11;
+               var ex =(TREbarra_menu.position.x)+4;
 
-               Tb_atras            =this.add.button(ex,ye,'Tb_atras',this.Atras,this);
-               Tb_siguiente        =this.add.button(Tb_atras.position.x+64,ye,'Tb_siguiente',this.Siguiente,this);
-               Tb_home             =this.add.button(Tb_siguiente.position.x+64,ye,'Tb_home',null,this);
-               Tb_actualizar       =this.add.button(Tb_home.position.x+64,ye,'Tb_actualizar',null,this);
-               Tcholito_negro      =juego.add.tileSprite(juego.width-400,ye,64,64,'cholito_negro');
-               TscroolBar          =juego.add.tileSprite(Tcholito_negro.position.x+50,ye+20,300,40,'TscroolBar2');
+               TREb_atras            =this.add.button(ex,ye,'TREb_atras',this.clasAtras,this);
+               TREb_siguiente        =this.add.button(TREb_atras.position.x+64,ye,'TREb_siguiente',this.clasSiguiente,this);
+               TREb_home             =this.add.button(TREb_siguiente.position.x+64,ye,'TREb_home',this.clasHome,this);
+               TREb_actualizar       =this.add.button(TREb_home.position.x+64,ye,'TREb_actualizar',this.clasActual,this);
+               TREcholito_negro      =juego.add.tileSprite(juego.width-400,ye,64,64,'cholito_negro');
+               TREscroolBar          =juego.add.tileSprite(TREcholito_negro.position.x+50,ye+20,300,40,'TREscroolBar2');
 
                var base = Math.floor((Math.random() * 2) + 4);
 
@@ -128,205 +136,340 @@ var Juego1_3 = {
 
               if (base==4)
                 {
-                   TbasePrimal=juego.add.sprite(juego.width/2,juego.height-137,'Tcuatro');
-                   TpunteroBase4=0;
+                   TREbasePrimal=juego.add.sprite(juego.width/2,juego.height-137,'TREcuatro');
+                   TREpunteroBase4=0;
+                   if (TREpunteroBaseDos==0) {
+                     var xdefecto = Math.floor((Math.random() * 3) + 1);
+                     if (xdefecto==1&&TRa==0) {
+                       TREuno=juego.add.sprite(TREbasePrimal.position.x-149,TREbasePrimal.position.y-73,'TREuno');
+                       juego.physics.arcade.enable([TREuno]);
+                       TREuno.body.allowGravity=false;
+                       TREuno.body.inmovable=true;
+                       TREuno.body.bounce.y=0;
+                       TREuno.inputEnabled = true;
+                       TREuno.anchor.set(0.5);
+                       TREuno.input.enableDrag();
 
-                   Tuno=juego.add.sprite(50,juego.height/2-200,'Tuno');
-                   juego.physics.arcade.enable([Tuno]);
-                   Tuno.body.allowGravity=false;
-                   Tuno.body.inmovable=true;
-                   Tuno.body.bounce.y=0;
-                   Tuno.inputEnabled = true;
-                   Tuno.anchor.set(0.5);
-                   Tuno.input.enableDrag();
-                   Tuno.input.boundsRect = TfondoDegra;
+                       TREuno.input.boundsRect = TREfondoDegra;
+                       TRa=2;
 
-                   Ttres=juego.add.sprite(50,juego.height/2-200,'Ttres');
-                   juego.physics.arcade.enable([Ttres]);
-                   Ttres.body.allowGravity=false;
-                   Ttres.body.inmovable=true;
-                   Ttres.body.bounce.y=0;
-                   Ttres.inputEnabled = true;
-                   Ttres.anchor.set(0.5);
-                   Ttres.input.enableDrag();
-                   Ttres.input.boundsRect = TfondoDegra;
+                     }
+                     if (xdefecto==2&&TRb==0) {
+
+                       TREdos=juego.add.sprite(TREbasePrimal.position.x-98,TREbasePrimal.position.y-73,'TREdos');
+                       juego.physics.arcade.enable([TREdos]);
+                       TREdos.body.allowGravity=false;
+                       TREdos.body.inmovable=true;
+                       TREdos.body.bounce.y=0;
+                       TREdos.inputEnabled = true;
+                       TREdos.anchor.set(0.5);
+                       TREdos.input.enableDrag();
+                       TREdos.input.boundsRect = TREfondoDegra;
+                       TRb=2;
+
+                     }
+                     if (xdefecto==3&&TRc==0) {
+                       TREtres=juego.add.sprite(TREbasePrimal.position.x-49,TREbasePrimal.position.y-73,'TREtres');
+                       juego.physics.arcade.enable([TREtres]);
+                       TREtres.body.allowGravity=false;
+                       TREtres.body.inmovable=true;
+                       TREtres.body.bounce.y=0;
+                       TREtres.inputEnabled = true;
+                       TREtres.anchor.set(0.5);
+                       TREtres.input.enableDrag();
+                       TREtres.input.boundsRect = TREfondoDegra;
+                       TRc=2;
+
+                     }
+
+                     TREpunteroBaseDos=1;
+
+                   }
+                   if (TREpunteroBaseDos==1) {
+
+                     if (TRa==0) {
+                       TREuno=juego.add.sprite(50,juego.height/2-200,'TREuno');
+                       juego.physics.arcade.enable([TREuno]);
+                       TREuno.body.allowGravity=false;
+                       TREuno.body.inmovable=true;
+                       TREuno.body.bounce.y=0;
+                       TREuno.inputEnabled = true;
+                       TREuno.anchor.set(0.5);
+                       TREuno.input.enableDrag();
+
+                       TREuno.input.boundsRect = TREfondoDegra;
+                       TRa=1;
+
+                     }
+                     if (TRb==0) {
+                       TREdos=juego.add.sprite(0,juego.height/2-200,'TREdos');
+                       juego.physics.arcade.enable([TREdos]);
+                       TREdos.body.allowGravity=false;
+                       TREdos.body.inmovable=true;
+
+                       TREdos.inputEnabled = true;
+                       TREdos.anchor.set(0.5);
+
+                       TREdos.input.enableDrag();
+                       TREdos.input.boundsRect = TREfondoDegra;
+
+                       TRb=1;
+
+                     }
+                     if (TRc==0) {
+                       TREtres=juego.add.sprite(50,juego.height/2-200,'TREtres');
+                       juego.physics.arcade.enable([TREtres]);
+                       TREtres.body.allowGravity=false;
+                       TREtres.body.inmovable=true;
+                       TREtres.body.bounce.y=0;
+                       TREtres.inputEnabled = true;
+                       TREtres.anchor.set(0.5);
+                       TREtres.input.enableDrag();
+                       TREtres.input.boundsRect = TREfondoDegra;
+                       TRc=1;
+
+                     }
+                     if (TRd==0) {
+                       TREcuatro=juego.add.sprite(25,juego.height/2-200,'TREdos');
+                       juego.physics.arcade.enable([TREcuatro]);
+                       TREcuatro.body.allowGravity=false;
+                       TREcuatro.body.inmovable=true;
+                       TREcuatro.inputEnabled = true;
+                       TREcuatro.anchor.set(0.5);
+                       TREcuatro.input.enableDrag();
+                       TREcuatro.input.boundsRect = TREfondoDegra;
+                       TRd=1;
+
+                     }
+
+                   }
 
 
-                   for (var i = 1; i <=2; i++)
-                   {
-                             var ran= Math.floor(Math.random()*2)+1;
-
-                             if (ran==1&& e==0) {
-                                                      Tcuatro=juego.add.sprite(25,juego.height/2-200,'Tdos');
-                                                      juego.physics.arcade.enable([Tcuatro]);
-                                                      Tcuatro.body.allowGravity=false;
-                                                      Tcuatro.body.inmovable=true;
-                                                      Tcuatro.inputEnabled = true;
-                                                      Tcuatro.anchor.set(0.5);
-                                                      Tcuatro.input.enableDrag();
-                                                      Tcuatro.input.boundsRect = TfondoDegra;
-
-                                                      e=1;
-                                                     }
-                             if (ran==2&& f==0) {
-                                                      Tdos=juego.add.sprite(0,juego.height/2-200,'Tdos');
-                                                      juego.physics.arcade.enable([Tdos]);
-                                                      Tdos.body.allowGravity=false;
-                                                      Tdos.body.inmovable=true;
-
-                                                      Tdos.inputEnabled = true;
-                                                      Tdos.anchor.set(0.5);
-
-                                                      Tdos.input.enableDrag();
-                                                      Tdos.input.boundsRect = TfondoDegra;
 
 
-                                                      f=1;
-                                                      }
 
-                    }
 
 
 
                 }
               else if (base==5)
               {
-                 TbasePrimal=juego.add.sprite(juego.width/2,juego.height-137,'Tcinco');
-                 TpunteroBase5=0;
+                 TREbasePrimal=juego.add.sprite(juego.width/2,juego.height-137,'TREcinco');
+                 TREpunteroBase5=0;
 
-                 Tdos=juego.add.sprite(50,juego.height/2-200,'Tdos');
-                 juego.physics.arcade.enable([Tdos]);
-                 Tdos.body.allowGravity=false;
-                 Tdos.body.inmovable=true;
-                 Tdos.body.bounce.y=0;
-                 Tdos.inputEnabled = true;
-                 Tdos.anchor.set(0.5);
-                 Tdos.input.enableDrag();
-                 Tdos.input.boundsRect = TfondoDegra;
+                 if (TREpunteroBaseDos==0) {
+                   var xdefecto = Math.floor((Math.random() * 4) + 1);
 
-                 Ttres=juego.add.sprite(50,juego.height/2-200,'Ttres');
-                 juego.physics.arcade.enable([Ttres]);
-                 Ttres.body.allowGravity=false;
-                 Ttres.body.inmovable=true;
-                 Ttres.body.bounce.y=0;
-                 Ttres.inputEnabled = true;
-                 Ttres.anchor.set(0.5);
+                   if (xdefecto==1&&TRa==0) {
 
-                 Ttres.input.enableDrag();
-                 Ttres.input.boundsRect = TfondoDegra;
+                     TREuno=juego.add.sprite(TREbasePrimal.position.x-199,TREbasePrimal.position.y-73,'TREuno');
+                     juego.physics.arcade.enable([TREuno]);
+                     TREuno.body.allowGravity=false;
+                     TREuno.body.inmovable=true;
+                     TREuno.body.bounce.y=0;
+                     TREuno.inputEnabled = true;
+                     TREuno.anchor.set(0.5);
+                     TREuno.input.enableDrag();
 
+                     TREuno.input.boundsRect = TREfondoDegra;
+                     TRa=2;
 
-                 for (var i = 1; i <=2; i++)
-                 {
-                           var ran= Math.floor(Math.random()*3)+1;
-
-                           if (ran==1&& e==0) {
-                                                    Tcuatro=juego.add.sprite(25,juego.height/2-200,'Tcuatro');
-                                                    juego.physics.arcade.enable([Tcuatro]);
-                                                    Tcuatro.body.allowGravity=false;
-                                                    Tcuatro.body.inmovable=true;
-                                                    Tcuatro.inputEnabled = true;
-                                                    Tcuatro.anchor.set(0.5);
-                                                    Tcuatro.input.enableDrag();
-                                                    Tcuatro.input.boundsRect = TfondoDegra;
-
-                                                    e=1;
-                                                   }
-                           if (ran==2&& f==0) {
-                                                    Tuno=juego.add.sprite(50,juego.height/2-200,'Tuno');
-                                                    juego.physics.arcade.enable([Tuno]);
-                                                    Tuno.body.allowGravity=false;
-                                                    Tuno.body.inmovable=true;
-                                                    Tuno.inputEnabled = true;
-                                                    Tuno.anchor.set(0.5);
-                                                    Tuno.input.enableDrag();
-                                                    Tuno.input.boundsRect = TfondoDegra;
+                   }
+                   if (xdefecto==2&&TRb==0) {
 
 
-                                                    f=1;
-                                                    }
+                     TREdos=juego.add.sprite(TREbasePrimal.position.x-149,TREbasePrimal.position.y-73,'TREdos');
+                     juego.physics.arcade.enable([TREdos]);
+                     TREdos.body.allowGravity=false;
+                     TREdos.body.inmovable=true;
+                     TREdos.body.bounce.y=0;
+                     TREdos.inputEnabled = true;
+                     TREdos.anchor.set(0.5);
+                     TREdos.input.enableDrag();
+                     TREdos.input.boundsRect = TREfondoDegra;
+                     TRb=2;
 
-                  }
+                   }
+                   if (xdefecto==3&&TRc==0) {
+                     TREtres=juego.add.sprite(TREbasePrimal.position.x-99,TREbasePrimal.position.y-73,'TREtres');
+                     juego.physics.arcade.enable([TREtres]);
+                     TREtres.body.allowGravity=false;
+                     TREtres.body.inmovable=true;
+                     TREtres.body.bounce.y=0;
+                     TREtres.inputEnabled = true;
+                     TREtres.anchor.set(0.5);
+                     TREtres.input.enableDrag();
+                     TREtres.input.boundsRect = TREfondoDegra;
+                     TRc=2;
+
+                   }
+                   if (xdefecto==4&&TRd==0) {
+
+                     TREcuatro=juego.add.sprite(TREbasePrimal.position.x-49,TREbasePrimal.position.y-73,'TREcuatro');
+                     juego.physics.arcade.enable([TREcuatro]);
+                     TREcuatro.body.allowGravity=false;
+                     TREcuatro.body.inmovable=true;
+                     TREcuatro.inputEnabled = true;
+                     TREcuatro.anchor.set(0.5);
+                     TREcuatro.input.enableDrag();
+                     TREcuatro.input.boundsRect = TREfondoDegra;
+                     TRd=2;
+
+                   }
+
+                   TREpunteroBaseDos=1;
+
+                 }
+                 if (TREpunteroBaseDos==1) {
+
+                   if (TRa==0) {
+                     TREuno=juego.add.sprite(50,juego.height/2-200,'TREuno');
+                     juego.physics.arcade.enable([TREuno]);
+                     TREuno.body.allowGravity=false;
+                     TREuno.body.inmovable=true;
+                     TREuno.body.bounce.y=0;
+                     TREuno.inputEnabled = true;
+                     TREuno.anchor.set(0.5);
+                     TREuno.input.enableDrag();
+
+                     TREuno.input.boundsRect = TREfondoDegra;
+                     TRa=1;
+
+                   }
+                   if (TRb==0) {
+                     TREdos=juego.add.sprite(0,juego.height/2-200,'TREdos');
+                     juego.physics.arcade.enable([TREdos]);
+                     TREdos.body.allowGravity=false;
+                     TREdos.body.inmovable=true;
+
+                     TREdos.inputEnabled = true;
+                     TREdos.anchor.set(0.5);
+
+                     TREdos.input.enableDrag();
+                     TREdos.input.boundsRect = TREfondoDegra;
+
+                     TRb=1;
+
+                   }
+                   if (TRc==0) {
+                     TREtres=juego.add.sprite(50,juego.height/2-200,'TREtres');
+                     juego.physics.arcade.enable([TREtres]);
+                     TREtres.body.allowGravity=false;
+                     TREtres.body.inmovable=true;
+                     TREtres.body.bounce.y=0;
+                     TREtres.inputEnabled = true;
+                     TREtres.anchor.set(0.5);
+                     TREtres.input.enableDrag();
+                     TREtres.input.boundsRect = TREfondoDegra;
+                     TRc=1;
+
+                   }
+                   if (TRd==0) {
+                     TREcuatro=juego.add.sprite(25,juego.height/2-200,'TREcuatro');
+                     juego.physics.arcade.enable([TREcuatro]);
+                     TREcuatro.body.allowGravity=false;
+                     TREcuatro.body.inmovable=true;
+                     TREcuatro.inputEnabled = true;
+                     TREcuatro.anchor.set(0.5);
+                     TREcuatro.input.enableDrag();
+                     TREcuatro.input.boundsRect = TREfondoDegra;
+                     TRd=1;
+
+                   }
+
+                 }
+
+
+
+
+
                 }
 
 
 
 
-               juego.physics.arcade.enable([Tpiso1,Tpiso2,TbasePrimal,Tbarra_menu,Tcholito,Tlapiz]);
-               juego.physics.arcade.gravity.y=260;
+               juego.physics.arcade.enable([TREpiso1,TREpiso2,TREbasePrimal,TREbarra_menu,TREcholito,TRElapiz]);
+               juego.physics.arcade.gravity.y=50;
 
-               TbasePrimal.anchor.setTo(0.5);
-               TbasePrimal.body.allowGravity=false;
-               TbasePrimal.body.immovable=true;
-               Tpiso1.body.allowGravity=false;
-               Tpiso1.body.immovable=true;
-               Tpiso2.body.allowGravity=false;
-               Tpiso2.body.immovable=true;
-               Tbarra_menu.body.allowGravity=false;
-               Tbarra_menu.body.immovable=true;
-               Tcholito.animations.play('stop');
-               Tlapiz.body.allowGravity=false;
-               Tlapiz.body.inmovable=true;
+               TREbasePrimal.anchor.setTo(0.5);
+               TREbasePrimal.body.allowGravity=false;
+               TREbasePrimal.body.immovable=true;
+               TREpiso1.body.allowGravity=false;
+               TREpiso1.body.immovable=true;
+               TREpiso2.body.allowGravity=false;
+               TREpiso2.body.immovable=true;
+               TREbarra_menu.body.allowGravity=false;
+               TREbarra_menu.body.immovable=true;
+               TREcholito.animations.play('stop');
+               TRElapiz.body.allowGravity=false;
+               TRElapiz.body.inmovable=true;
 
 
-               Tcholito.animations.play('stop');
+               TREcholito.animations.play('stop');
 
-               Ttexto1 = juego.add.text(200, 20, "0", {font: "30px Arial", fill: "#FFF"});
-               Ttexto2 = juego.add.text(500, 20, "0", {font: "30px Arial", fill: "#FFF"});
+               TREtexto1 = juego.add.text(200, 20, "0", {font: "30px Arial", fill: "#FFF"});
+               TREtexto2 = juego.add.text(500, 20, "0", {font: "30px Arial", fill: "#FFF"});
+
+
 
 
 
 
 
     },
-    Siguiente:function(){  this.state.start('Juego1_2');},
+    clasAtras:function(){alert("atras");},
+    clasSiguiente:function(){alert("Siguiente");},
+    clasHome:function(){alert("home");},
+    clasActual:function(){this.state.start('Juego1_3');},
     update:function()
     {
-      Ttiempo = juego.time.events.loop(0, this.choqueIzquierda, this);
-      Ttiempo = juego.time.events.loop(0, this.choqueDerecha, this);
-      Ttiempo = juego.time.events.loop(1000, this.pasarBloques, this);
-      Ttiempo = juego.time.events.loop(0,this.chocoUno,this);
-      Ttiempo = juego.time.events.loop(0,this.chocoDos,this);
-      Ttiempo = juego.time.events.loop(0,this.chocoTres,this);
-      Ttiempo = juego.time.events.loop(0,this.chocoCuatro,this);
-      Ttiempo = juego.time.events.loop(0,this.chocoCinco,this);
-
-      juego.physics.arcade.collide(Tcholito,Tpiso1);
-      juego.physics.arcade.collide(Tcholito,Tpiso2);
-      juego.physics.arcade.collide(Tcholito,Tuno);
-      juego.physics.arcade.collide(Tcholito,Tdos);
-      juego.physics.arcade.collide(Tcholito,Ttres);
-      juego.physics.arcade.collide(Tcholito,Tcuatro);
-      juego.physics.arcade.collide(Tcholito,Tcinco);
-      var jas=juego.physics.arcade.collide(Tcholito,Tlapiz);
-      juego.physics.arcade.overlap(Tcholito, Tuno, this.choco_uno_cholito, null, this);
-      juego.physics.arcade.overlap(Tcholito, Tdos, this.choco_dos_cholito, null, this);
-      juego.physics.arcade.overlap(Tcholito, Ttres, this.choco_tres_cholito, null, this);
-      juego.physics.arcade.overlap(Tcholito, Tcuatro, this.choco_cuatro_cholito, null, this);
-      juego.physics.arcade.overlap(Tcholito, Tcinco, this.choco_cinco_cholito, null, this);
-      juego.physics.arcade.overlap(Tcholito, Tlapiz, this.choco_lapiz_cholito, null, this);
-
-
-      juego.physics.arcade.overlap(TbasePrimal, Tuno, this.choco_uno_basePrimal, null, this);
-      juego.physics.arcade.overlap(TbasePrimal, Tdos, this.choco_dos_basePrimal, null, this);
-      juego.physics.arcade.overlap(TbasePrimal, Ttres, this.choco_tres_basePrimal, null, this);
-      juego.physics.arcade.overlap(TbasePrimal, Tcuatro, this.choco_cuatro_basePrimal, null, this);
-
-      juego.physics.arcade.overlap(Tdos, Ttres, this.choco_dos_tres, null, this);
-      juego.physics.arcade.overlap(Tdos, Tuno, this.choco_dos_uno, null, this);
-      juego.physics.arcade.overlap(Tdos, Tcuatro, this.choco_dos_cuatro, null, this);
-      juego.physics.arcade.overlap(Ttres, Tuno, this.choco_tres_uno, null, this);
-      juego.physics.arcade.overlap(Ttres, Tcuatro, this.choco_tres_cuatro, null, this);
-      juego.physics.arcade.overlap(Tuno, Tcuatro, this.choco_uno_cuatro, null, this);
+      TREtiempo = juego.time.events.loop(0, this.choqueIzquierda, this);
+      TREtiempo = juego.time.events.loop(0, this.choqueDerecha, this);
+      TREtiempo = juego.time.events.loop(1000, this.pasarBloques, this);
+      TREtiempo = juego.time.events.loop(0,this.chocoUno,this);
+      TREtiempo = juego.time.events.loop(0,this.chocoDos,this);
+      TREtiempo = juego.time.events.loop(0,this.chocoTres,this);
+      TREtiempo = juego.time.events.loop(0,this.chocoCuatro,this);
+      TREtiempo = juego.time.events.loop(0,this.chocoCinco,this);
+      TREtiempo = juego.time.events.loop(4000, this.PasarNivel, this);
+       TREcholito.body.velocity.x= 0;
+      juego.physics.arcade.collide(TREcholito,TREpiso1);
+      juego.physics.arcade.collide(TREcholito,TREpiso2);
+      juego.physics.arcade.collide(TREcholito,TREuno);
+      juego.physics.arcade.collide(TREcholito,TREdos);
+      juego.physics.arcade.collide(TREcholito,TREtres);
+      juego.physics.arcade.collide(TREcholito,TREcuatro);
+      juego.physics.arcade.collide(TREcholito,TREcinco);
+      var jas=juego.physics.arcade.collide(TREcholito,TRElapiz);
+      juego.physics.arcade.overlap(TREcholito, TREuno, this.choco_uno_cholito, null, this);
+      juego.physics.arcade.overlap(TREcholito, TREdos, this.choco_dos_cholito, null, this);
+      juego.physics.arcade.overlap(TREcholito, TREtres, this.choco_tres_cholito, null, this);
+      juego.physics.arcade.overlap(TREcholito, TREcuatro, this.choco_cuatro_cholito, null, this);
+      juego.physics.arcade.overlap(TREcholito, TREcinco, this.choco_cinco_cholito, null, this);
+      juego.physics.arcade.overlap(TREcholito, TRElapiz, this.choco_lapiz_cholito, null, this);
 
 
+      juego.physics.arcade.overlap(TREbasePrimal, TREuno, this.choco_uno_basePrimal, null, this);
+      juego.physics.arcade.overlap(TREbasePrimal, TREdos, this.choco_dos_basePrimal, null, this);
+      juego.physics.arcade.overlap(TREbasePrimal, TREtres, this.choco_tres_basePrimal, null, this);
+      juego.physics.arcade.overlap(TREbasePrimal, TREcuatro, this.choco_cuatro_basePrimal, null, this);
 
-      if(Tlapiz.position.y!=30)
+      juego.physics.arcade.overlap(TREuno, TREcuatro, this.choco_uno_cuatro, null, this);
+      juego.physics.arcade.overlap(TREdos, TREtres, this.choco_dos_tres, null, this);
+      juego.physics.arcade.overlap(TREdos, TREuno, this.choco_dos_uno, null, this);
+      juego.physics.arcade.overlap(TREdos, TREcuatro, this.choco_dos_cuatro, null, this);
+      juego.physics.arcade.overlap(TREtres, TREuno, this.choco_tres_uno, null, this);
+      juego.physics.arcade.overlap(TREtres, TREcuatro, this.choco_tres_cuatro, null, this);
+
+
+
+
+      if(TRElapiz.position.y!=30)
       {
-        Tlapiz.animations.play('anilapiz');
+        TRElapiz.animations.play('anilapiz');
       }
-      if (Tlapiz.position.y==30) {
-        Tlapiz.animations.play('stop')
+      if (TRElapiz.position.y==30) {
+        TRElapiz.animations.play('stop')
       }
 
 
@@ -334,76 +477,76 @@ var Juego1_3 = {
 
 
 
-      if(Ttres!=null && Ttres.position.y!=536)
+      if(TREtres!=null && TREtres.position.y!=536)
           {
-              Tbaseprimal_secundario_tres=false;
-              Ttres.inputEnabled = true;
-              Ttres.inputEnabled = true;
+              TREbaseprimal_secundario_tres=false;
+              TREtres.inputEnabled = true;
+              TREtres.inputEnabled = true;
 
 
           }
-          if(Tdos!=null && Tdos.position.y!=536)
+          if(TREdos!=null && TREdos.position.y!=536)
                   {
-                      Tbaseprimal_secundario_dos=false;
-                      Tdos.inputEnabled = true;
-                      Tdos.inputEnabled = true;
+                      TREbaseprimal_secundario_dos=false;
+                      TREdos.inputEnabled = true;
+                      TREdos.inputEnabled = true;
 
                   }
 
-              if(Tuno!=null && Tuno.position.y!=536)
+              if(TREuno!=null && TREuno.position.y!=536)
                       {
-                          Tbaseprimal_secundario_uno=false;
-                          Tuno.inputEnabled = true;
-                          Tuno.inputEnabled = true;
+                          TREbaseprimal_secundario_uno=false;
+                          TREuno.inputEnabled = true;
+                          TREuno.inputEnabled = true;
 
                       }
 
-                      if(Tcuatro!=null && Tcuatro.position.y!=536)
+                      if(TREcuatro!=null && TREcuatro.position.y!=536)
                               {
-                                  Tbaseprimal_secundario_cuatro=false;
-                                  Tcuatro.inputEnabled = true;
-                                  Tcuatro.inputEnabled = true;
+                                  TREbaseprimal_secundario_cuatro=false;
+                                  TREcuatro.inputEnabled = true;
+                                  TREcuatro.inputEnabled = true;
 
                               }
 
-      if (TpunteroBase4==0) {
+      if (TREpunteroBase4==0) {
 
-        if (Tbaseprimal_secundario_uno&&Tbaseprimal_secundario_tres==true&&lapizPuntero==0) {
-          Tuno.inputEnabled = false;
-          Ttres.inputEnabled = false;
-          Tcholito.body.velocity.x= +200;
+        if (TREbaseprimal_secundario_uno&&TREbaseprimal_secundario_tres==true&& PunteroNivel==0) {
+          TREuno.inputEnabled = false;
+          TREtres.inputEnabled = false;
+          TREcholito.body.velocity.x= +500;
 
-          Tcholito.animations.play('derecha');
+          TREcholito.animations.play('derecha');
           if (jas==true) {
 
-            Tcholito.body.velocity.x= 0;
-            Tcholito.animations.play('stop');
+            TREcholito.body.velocity.x= 0;
+            TREcholito.animations.play('stop');
 
-            Tlapiz.position.y=30;
-            Tlapiz.anchor.setTo(0.5);
-            Tlapiz.position.x=700;
-            lapizPuntero=1;
+            TRElapiz.position.y=30;
+            TRElapiz.anchor.setTo(0.5);
+            TRElapiz.position.x=700;
+            PunteroNivel=1;
 
 
           }
 
         }
 
-        if (Tbaseprimal_secundario_dos&&Tbaseprimal_secundario_cuatro==true&&lapizPuntero==0) {
-          Tdos.inputEnabled = false;
-          Tcuatro.inputEnabled = false;
-          Tcholito.body.velocity.x= +200;
+        if (TREbaseprimal_secundario_dos&&TREbaseprimal_secundario_cuatro==true&&PunteroNivel==0) {
+          TREdos.inputEnabled = false;
+          TREcuatro.inputEnabled = false;
+          TREcholito.body.velocity.x= +500;
 
-          Tcholito.animations.play('derecha');
+          TREcholito.animations.play('derecha');
           if (jas==true) {
 
-            Tcholito.body.velocity.x= 0;
-            Tcholito.animations.play('stop');
+            TREcholito.body.velocity.x= 0;
+            TREcholito.animations.play('stop');
 
-            Tlapiz.position.y=30;
-            Tlapiz.anchor.setTo(0.5);
-            Tlapiz.position.x=700;
-            lapizPuntero=1;
+            TRElapiz.position.y=30;
+            TRElapiz.anchor.setTo(0.5);
+            TRElapiz.position.x=700;
+            PunteroNivel=1;
 
 
           }
@@ -414,51 +557,46 @@ var Juego1_3 = {
 
       }
 
-      if (TpunteroBase5==0) {
-        if (Tbaseprimal_secundario_uno&&Tbaseprimal_secundario_cuatro==true&&lapizPuntero==0) {
-          Tuno.inputEnabled = false;
-          Tcuatro.inputEnabled = false;
-          Tcholito.body.velocity.x= +200;
-          Tcholito.animations.play('derecha');
+      if (TREpunteroBase5==0) {
+        if (TREbaseprimal_secundario_uno&&TREbaseprimal_secundario_cuatro==true&&PunteroNivel==0) {
+          TREuno.inputEnabled = false;
+          TREcuatro.inputEnabled = false;
+          TREcholito.body.velocity.x= +500;
+          TREcholito.animations.play('derecha');
           if (jas==true) {
 
-            Tcholito.body.velocity.x= 0;
-            Tcholito.animations.play('stop');
+            TREcholito.body.velocity.x= 0;
+            TREcholito.animations.play('stop');
 
-            Tlapiz.position.y=30;
-            Tlapiz.anchor.setTo(0.5);
-            Tlapiz.position.x=700;
-            lapizPuntero=1;
+            TRElapiz.position.y=30;
+            TRElapiz.anchor.setTo(0.5);
+            TRElapiz.position.x=700;
+            PunteroNivel=1;
 
 
           }
 
         }
-        if (Tbaseprimal_secundario_dos&&Tbaseprimal_secundario_tres==true&&lapizPuntero==0) {
-          Ttres.inputEnabled = false;
-          Tdos.inputEnabled = false;
-          Tcholito.body.velocity.x= +200;
-          Tcholito.animations.play('derecha');
+        if (TREbaseprimal_secundario_dos&&TREbaseprimal_secundario_tres==true&&PunteroNivel==0) {
+          TREtres.inputEnabled = false;
+          TREdos.inputEnabled = false;
+          TREcholito.body.velocity.x= +500;
+          TREcholito.animations.play('derecha');
           if (jas==true) {
 
-            Tcholito.body.velocity.x= 0;
-            Tcholito.animations.play('stop');
+            TREcholito.body.velocity.x= 0;
+            TREcholito.animations.play('stop');
 
-            Tlapiz.position.y=30;
-            Tlapiz.anchor.setTo(0.5);
-            Tlapiz.position.x=700;
-            lapizPuntero=1;
+            TRElapiz.position.y=30;
+            TRElapiz.anchor.setTo(0.5);
+            TRElapiz.position.x=700;
+            PunteroNivel=1;
 
 
           }
 
         }
-        else if (Tbaseprimal_secundario_uno && Tbaseprimal_secundario_cuatro!=true) {
-          Tcholito.animations.play('stop');
-          Tcholito.body.velocity.x=0;
-          lapizPuntero==0
 
-        }
 
       }
 
@@ -466,242 +604,252 @@ var Juego1_3 = {
 
 
 
-   Ttexto1.text=Tbaseprimal_secundario_uno;
-  Ttexto2.text=Tbaseprimal_secundario_cuatro;
+   TREtexto1.text=TREbaseprimal_secundario_dos;
+  TREtexto2.text=TREbaseprimal_secundario_tres;
+
 
     },
 
-    choco_uno_cholito:function(){Tuno.body.allowGravity=false; Tuno.body.immovable=true;},
-    choco_dos_cholito:function(){Tdos.body.allowGravity=false; Tdos.body.immovable=true;},
-    choco_tres_cholito:function(){Ttres.body.allowGravity=false; Ttres.body.immovable=true;},
-    choco_cuatro_cholito:function(){Tcuatro.body.allowGravity=false; Tcuatro.body.immovable=true;},
-    choco_cinco_cholito:function(){Tcinco.body.allowGravity=false; Tcinco.body.immovable=true;},
-    choco_lapiz_cholito:function(){ Tlapiz.body.allowGravity=false; Tlapiz.body.immovable=true;},
+    PasarNivel:function()
+    {
+      if (TRElapiz.position.y==30)
+      {
+           alert("genial");
+      }
+  },
+
+    choco_uno_cholito:function(){TREuno.body.allowGravity=false; TREuno.body.immovable=true;},
+    choco_dos_cholito:function(){TREdos.body.allowGravity=false; TREdos.body.immovable=true;},
+    choco_tres_cholito:function(){TREtres.body.allowGravity=false; TREtres.body.immovable=true;},
+    choco_cuatro_cholito:function(){TREcuatro.body.allowGravity=false; TREcuatro.body.immovable=true;},
+    choco_cinco_cholito:function(){TREcinco.body.allowGravity=false; TREcinco.body.immovable=true;},
+    choco_lapiz_cholito:function(){ TRElapiz.body.allowGravity=false; TRElapiz.body.immovable=true;},
 
     choco_uno_cuatro:function()
     {
-      if(Tbaseprimal_secundario_cuatro==true &&Tuno.position.y>=450 )
+      if(TREbaseprimal_secundario_cuatro==true &&TREuno.position.y>=450 )
         {
 
 
-           Tuno.position.y=250;
+           TREuno.position.y=250;
 
         }
-        if(Tbaseprimal_secundario_uno==true &&Tcuatro.position.y>=450 )
+        if(TREbaseprimal_secundario_uno==true &&TREcuatro.position.y>=450 )
           {
 
-             Tcuatro.position.y=250;
+             TREcuatro.position.y=250;
 
           }
 
     },
     choco_tres_cuatro:function()
     {
-      if(Tbaseprimal_secundario_cuatro==true &&Ttres.position.y>=450 )
+      if(TREbaseprimal_secundario_cuatro==true &&TREtres.position.y>=450 )
         {
 
 
-           Ttres.position.y=250;
+           TREtres.position.y=250;
 
         }
-        if(Tbaseprimal_secundario_tres==true &&Tcuatro.position.y>=450 )
+        if(TREbaseprimal_secundario_tres==true &&TREcuatro.position.y>=450 )
           {
 
-             Tcuatro.position.y=250;
+             TREcuatro.position.y=250;
 
           }
 
     },
     choco_tres_uno:function()
     {
-      if(Tbaseprimal_secundario_uno==true &&Ttres.position.y>=450 )
+      if(TREbaseprimal_secundario_uno==true &&TREtres.position.y>=450 )
         {
 
 
-           Ttres.position.y=250;
+           TREtres.position.y=250;
 
         }
-        if(Tbaseprimal_secundario_tres==true &&Tuno.position.y>=450 )
+        if(TREbaseprimal_secundario_tres==true &&TREuno.position.y>=450 )
           {
 
-             Tuno.position.y=250;
+             TREuno.position.y=250;
 
           }
 
     },
     choco_dos_cuatro:function()
     {
-      if(Tbaseprimal_secundario_cuatro==true &&Tdos.position.y>=450 )
+      if(TREbaseprimal_secundario_cuatro==true &&TREdos.position.y>=450 )
         {
 
 
-           Tdos.position.y=250;
+           TREdos.position.y=250;
 
         }
-        if(Tbaseprimal_secundario_dos==true &&Tcuatro.position.y>=450 )
+        if(TREbaseprimal_secundario_dos==true &&TREcuatro.position.y>=450 )
           {
 
-             Tcuatro.position.y=250;
+             TREcuatro.position.y=250;
 
           }
 
     },
     choco_dos_uno:function()
     {
-      if(Tbaseprimal_secundario_uno==true &&Tdos.position.y>=450 )
+      if(TREbaseprimal_secundario_uno==true &&TREdos.position.y>=450 )
         {
 
 
-           Tdos.position.y=250;
+           TREdos.position.y=250;
 
         }
-        if(Tbaseprimal_secundario_dos==true &&Tuno.position.y>=450 )
+        if(TREbaseprimal_secundario_dos==true &&TREuno.position.y>=450 )
           {
 
-             Tuno.position.y=250;
+             TREuno.position.y=250;
 
           }
 
     },
     choco_dos_tres:function()
     {
-      if(Tbaseprimal_secundario_tres==true &&Tdos.position.y>=450 )
+      if(TREbaseprimal_secundario_tres==true &&TREdos.position.y>=450 )
         {
 
 
-           Tdos.position.y=250;
+           TREdos.position.y=250;
 
         }
-        if(Tbaseprimal_secundario_dos==true &&Ttres.position.y>=450 )
+        if(TREbaseprimal_secundario_dos==true &&TREtres.position.y>=450 )
           {
 
-             Ttres.position.y=250;
+             TREtres.position.y=250;
 
           }
 
     },
 
-    choco_uno_basePrimal:function(){Tuno.position.y=TbasePrimal.position.y-75; Tbaseprimal_secundario_uno=true;},
-    choco_dos_basePrimal:function(){Tdos.position.y=TbasePrimal.position.y-75; Tbaseprimal_secundario_dos=true;},
-    choco_tres_basePrimal:function(){Ttres.position.y=TbasePrimal.position.y-75; Tbaseprimal_secundario_tres=true;},
-    choco_cuatro_basePrimal:function(){Tcuatro.position.y=TbasePrimal.position.y-75; Tbaseprimal_secundario_cuatro=true;},
+    choco_uno_basePrimal:function(){TREuno.position.y=TREbasePrimal.position.y-75; TREbaseprimal_secundario_uno=true;},
+    choco_dos_basePrimal:function(){TREdos.position.y=TREbasePrimal.position.y-75; TREbaseprimal_secundario_dos=true;},
+    choco_tres_basePrimal:function(){TREtres.position.y=TREbasePrimal.position.y-75; TREbaseprimal_secundario_tres=true;},
+    choco_cuatro_basePrimal:function(){TREcuatro.position.y=TREbasePrimal.position.y-75; TREbaseprimal_secundario_cuatro=true;},
 
     chocoUno:function(){
 
-        var uno1=juego.physics.arcade.overlap(Tpiso1, Tuno, null, null, this);
-        var uno2=juego.physics.arcade.overlap(Tpiso2, Tuno, null, null, this);
-        var uno3=juego.physics.arcade.overlap(Tbarra_menu, Tuno, null, null, this);
+        var uno1=juego.physics.arcade.overlap(TREpiso1, TREuno, null, null, this);
+        var uno2=juego.physics.arcade.overlap(TREpiso2, TREuno, null, null, this);
+        var uno3=juego.physics.arcade.overlap(TREbarra_menu, TREuno, null, null, this);
 
 
 
        if(uno1==true ||uno2==true||uno3==true)  {
-            var pos_barraMenu_y=Tpiso2.position.y;
-             if (Tuno.position.y>=pos_barraMenu_y) { Tuno.position.y=Tpiso2.position.y-38;  }
+            var pos_barraMenu_y=TREpiso2.position.y;
+             if (TREuno.position.y>=pos_barraMenu_y) { TREuno.position.y=TREpiso2.position.y-38;  }
 
         }
      },
      chocoDos:function(){
-         var dos1=juego.physics.arcade.overlap(Tpiso1, Tdos, null, null, this);
-         var dos2=juego.physics.arcade.overlap(Tpiso2, Tdos, null, null, this);
-         var dos3=juego.physics.arcade.overlap(Tbarra_menu, Tdos, null, null, this);
+         var dos1=juego.physics.arcade.overlap(TREpiso1, TREdos, null, null, this);
+         var dos2=juego.physics.arcade.overlap(TREpiso2, TREdos, null, null, this);
+         var dos3=juego.physics.arcade.overlap(TREbarra_menu, TREdos, null, null, this);
 
 
 
         if(dos1==true ||dos2==true||dos3==true)  {
-             var pos_barraMenu_y=Tpiso2.position.y;
-              if (Tdos.position.y>=pos_barraMenu_y) { Tdos.position.y=Tpiso2.position.y-38;  }
+             var pos_barraMenu_y=TREpiso2.position.y;
+              if (TREdos.position.y>=pos_barraMenu_y) { TREdos.position.y=TREpiso2.position.y-38;  }
 
          }
      },
      chocoTres:function(){
-         var tres1=juego.physics.arcade.overlap(Tpiso1, Ttres, null, null, this);
-         var tres2=juego.physics.arcade.overlap(Tpiso2, Ttres, null, null, this);
-         var tres3=juego.physics.arcade.overlap(Tbarra_menu, Ttres, null, null, this);
+         var tres1=juego.physics.arcade.overlap(TREpiso1, TREtres, null, null, this);
+         var tres2=juego.physics.arcade.overlap(TREpiso2, TREtres, null, null, this);
+         var tres3=juego.physics.arcade.overlap(TREbarra_menu, TREtres, null, null, this);
 
 
 
         if(tres1==true ||tres2==true||tres3==true)  {
-             var pos_barraMenu_y=Tpiso2.position.y;
-              if (Ttres.position.y>=pos_barraMenu_y) { Ttres.position.y=Tpiso2.position.y-38;  }
+             var pos_barraMenu_y=TREpiso2.position.y;
+              if (TREtres.position.y>=pos_barraMenu_y) { TREtres.position.y=TREpiso2.position.y-38;  }
 
          }
      },
      chocoCuatro:function(){
-         var cuatro1=juego.physics.arcade.overlap(Tpiso1, Tcuatro, null, null, this);
-         var cuatro2=juego.physics.arcade.overlap(Tpiso2, Tcuatro, null, null, this);
-         var cuatro3=juego.physics.arcade.overlap(Tbarra_menu, Tcuatro, null, null, this);
+
+         var cuatro1=juego.physics.arcade.overlap(TREpiso1, TREcuatro, null, null, this);
+         var cuatro2=juego.physics.arcade.overlap(TREpiso2, TREcuatro, null, null, this);
+         var cuatro3=juego.physics.arcade.overlap(TREbarra_menu, TREcuatro, null, null, this);
 
 
 
         if(cuatro1==true ||cuatro2==true||cuatro3==true)  {
-             var pos_barraMenu_y=Tpiso2.position.y;
-              if (Tcuatro.position.y>=pos_barraMenu_y) { Tcuatro.position.y=Tpiso2.position.y-38;  }
+             var pos_barraMenu_y=TREpiso2.position.y;
+              if (TREcuatro.position.y>=pos_barraMenu_y) { TREcuatro.position.y=TREpiso2.position.y-38;  }
 
          }
      },
      chocoCinco:function(){
-         var cinco1=juego.physics.arcade.overlap(Tpiso1, Tcinco, null, null, this);
-         var cinco2=juego.physics.arcade.overlap(Tpiso2, Tcinco, null, null, this);
-         var cinco3=juego.physics.arcade.overlap(Tbarra_menu, Tcinco, null, null, this);
+         var cinco1=juego.physics.arcade.overlap(TREpiso1, TREcinco, null, null, this);
+         var cinco2=juego.physics.arcade.overlap(TREpiso2, TREcinco, null, null, this);
+         var cinco3=juego.physics.arcade.overlap(TREbarra_menu, TREcinco, null, null, this);
 
 
 
         if(cinco1==true ||cinco2==true||cinco3==true)  {
-             var pos_barraMenu_y=Tpiso2.position.y;
-              if (Tcinco.position.y>=pos_barraMenu_y) { Tcinco.position.y=Tpiso2.position.y-38;  }
+             var pos_barraMenu_y=TREpiso2.position.y;
+              if (TREcinco.position.y>=pos_barraMenu_y) { TREcinco.position.y=TREpiso2.position.y-38;  }
 
          }
      },
 
     choqueDerecha:function()     {
-         juego.physics.arcade.overlap(Tpiso2,TbasePrimal, this.tocoDos, null, this);
-         if(Tparar2==0) { Tpiso2.body.velocity.x=-250; }
-         else if (Tparar2==1) {
-             if(Tespacio_piso1==0){
-                                   Tpiso2.body.velocity.x=0;
-                                   var m =Tpiso2.position.x;
-                                   Tpiso2.position.x=m+5;
-                                   Tespacio_piso1=1;
+         juego.physics.arcade.overlap(TREpiso2,TREbasePrimal, this.tocoDos, null, this);
+         if(TREparar2==0) { TREpiso2.body.velocity.x=-250; }
+         else if (TREparar2==1) {
+             if(TREespacio_piso1==0){
+                                   TREpiso2.body.velocity.x=0;
+                                   var m =TREpiso2.position.x;
+                                   TREpiso2.position.x=m+10;
+                                   TREespacio_piso1=1;
 
                                }
 
                              }
          },
           tocoDos:function()     {
-           if(Tpiso2.alive == false) { return; }
-               Tparar2=1;
+           if(TREpiso2.alive == false) { return; }
+               TREparar2=1;
          },
     choqueIzquierda:function()   {
-          juego.physics.arcade.overlap(Tpiso1,TbasePrimal, this.tocoUno, null, this);
-          if(Tparar1==0) { Tpiso1.body.velocity.x=+250; }
-          else if (Tparar1==1)
+          juego.physics.arcade.overlap(TREpiso1,TREbasePrimal, this.tocoUno, null, this);
+          if(TREparar1==0) { TREpiso1.body.velocity.x=+250; }
+          else if (TREparar1==1)
           {
-              if(Tespacio_piso2==0)
+              if(TREespacio_piso2==0)
                   {
-                               Tpiso1.body.velocity.x=0;
-                               var m =Tpiso1.position.x;
-                               Tpiso1.position.x=m-5;
-                               Tespacio_piso2=1;
+                               TREpiso1.body.velocity.x=0;
+                               var m =TREpiso1.position.x;
+                               TREpiso1.position.x=m-10;
+                               TREespacio_piso2=1;
 
                   }
           }
           },
           tocoUno:function()     {
-            if(Tpiso1.alive == false) { return; }
-                Tparar1=1;
+            if(TREpiso1.alive == false) { return; }
+                TREparar1=1;
           },
     pasarBloques:function()      {
-        if(Tuno!=null)
+        if(TREuno!=null&&TRa!=2)
 
             {
-              if(Tx1==0) {
-                      if(Tuno.position.x<=Txpuntero  ) {
-                                                      Tuno.body.velocity.x=+500;
+              if(TREx1==0) {
+                      if(TREuno.position.x<=TRExpuntero  ) {
+                                                      TREuno.body.velocity.x=+500;
                                                       }
-                      if(Tuno.position.x>=Txpuntero ){
-                                                      Tuno.body.velocity.x=0;
-                                                      Txpuntero=Tuno.position.x+400;
-                                                      Tx1=1;
+                      if(TREuno.position.x>=TRExpuntero ){
+                                                      TREuno.body.velocity.x=0;
+                                                      TRExpuntero=TREuno.position.x+400;
+                                                      TREx1=1;
                                          }
 
                   }
@@ -710,17 +858,17 @@ var Juego1_3 = {
 
 
             }
-        if(Tdos!=null)
+        if(TREdos!=null&&TRb!=2)
 
             {
-              if(Tx2==0) {
-                      if(Tdos.position.x<=Txpuntero  ) {
-                                                      Tdos.body.velocity.x=+500;
+              if(TREx2==0) {
+                      if(TREdos.position.x<=TRExpuntero  ) {
+                                                      TREdos.body.velocity.x=+500;
                                                       }
-                      if(Tdos.position.x>=Txpuntero ){
-                                                      Tdos.body.velocity.x=0;
-                                                      Txpuntero=Tdos.position.x+400;
-                                                      Tx2=1;
+                      if(TREdos.position.x>=TRExpuntero ){
+                                                      TREdos.body.velocity.x=0;
+                                                      TRExpuntero=TREdos.position.x+400;
+                                                      TREx2=1;
                                          }
 
                   }
@@ -728,17 +876,17 @@ var Juego1_3 = {
 
 
             }
-        if(Ttres!=null)
+        if(TREtres!=null&&TRc!=2)
 
             {
-              if(Tx3==0) {
-                      if(Ttres.position.x<=Txpuntero  ) {
-                                                      Ttres.body.velocity.x=+500;
+              if(TREx3==0) {
+                      if(TREtres.position.x<=TRExpuntero  ) {
+                                                      TREtres.body.velocity.x=+500;
                                                       }
-                      if(Ttres.position.x>=Txpuntero ){
-                                                      Ttres.body.velocity.x=0;
-                                                      Txpuntero=Ttres.position.x+400;
-                                                      Tx3=1;
+                      if(TREtres.position.x>=TRExpuntero ){
+                                                      TREtres.body.velocity.x=0;
+                                                      TRExpuntero=TREtres.position.x+400;
+                                                      TREx3=1;
                                          }
 
                   }
@@ -746,41 +894,41 @@ var Juego1_3 = {
 
 
             }
-        if(Tcuatro!=null)
+        if(TREcuatro!=null&&TRd!=2)
 
             {
-              if(Tx4==0) {
-                      if(Tcuatro.position.x<=Txpuntero  ) {
-                                                      Tcuatro.body.velocity.x=+500;
+              if(TREx4==0) {
+                      if(TREcuatro.position.x<=TRExpuntero  ) {
+                                                      TREcuatro.body.velocity.x=+500;
                                                       }
-                      if(Tcuatro.position.x>=Txpuntero ){
-                                                      Tcuatro.body.velocity.x=0;
-                                                      Txpuntero=Tcuatro.position.x+400;
-                                                      Tx4=1;
+                      if(TREcuatro.position.x>=TRExpuntero ){
+                                                      TREcuatro.body.velocity.x=0;
+                                                      TRExpuntero=TREcuatro.position.x+400;
+                                                      TREx4=1;
                                          }
 
                   }
 
 
             }
-            if(Tcinco!=null)
+            if(TREcinco!=null)
 
             {
 
 
 
             }
-            if (Tlapiz!=null) {
+            if (TRElapiz!=null) {
 
-              if (Tx6==0) {
-                if (Tlapiz.position.x<=juego.width-250) {
-                  Tlapiz.body.velocity.x=+400;
+              if (TREx6==0) {
+                if (TRElapiz.position.x<=juego.width-250) {
+                  TRElapiz.body.velocity.x=+600;
 
                 }
-                if (Tlapiz.position.x>=juego.width-250) {
-                  Tlapiz.body.velocity.x=0;
-                  Tlapiz.position.y=Tpiso1.position.y-55;
-                  Tx6=1;
+                if (TRElapiz.position.x>=juego.width-250) {
+                  TRElapiz.body.velocity.x=0;
+                  TRElapiz.position.y=TREpiso1.position.y-55;
+                  TREx6=1;
 
                 }
 

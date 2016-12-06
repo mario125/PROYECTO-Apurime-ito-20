@@ -277,6 +277,7 @@ var Nivel =
   },
   Basico:function()
   {
+
     this.state.start('Juego1_1');
 
   },
@@ -286,7 +287,7 @@ var Nivel =
   },
   Actualizar:function()
   {
-    alert("boton actializar");
+    this.state.start('Nivel');
   },
   Home:function()
   {

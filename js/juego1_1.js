@@ -44,25 +44,14 @@
              var b = 0 ;
              var c = 0 ;
              //COLITION  DE  BLOQUES  CON PISO1 PISO2 MENU
-             var  uno1;
-             var  uno2;
-             var  uno3;
+              var uno = null;
+var dos = null;
+var tres = null;
+var cuatro = null;
+var cinco = null;
 
-             var  dos1;
-             var  dos2;
-             var  dos3;
 
-             var  tres1;
-             var  tres2;
-             var  tres3;
 
-             var  cuatro1;
-             var  cuatro2;
-             var  cuatro3;
-
-             var  cinco1;
-             var  cinco2;
-             var  cinco3;
              // CHOLITO
              var stop="arriba";
              //SI  CHOCA   CON BASE  PRIMAL
@@ -98,6 +87,33 @@ var Juego1_1 = {
     },
     create:function()
     {
+
+
+       x1 = 0;
+       x2 = 0;
+       x3 = 0;
+       x4 = 0;
+       x5 = 0;
+       x6 = 0;
+       xpuntero = 90;
+      //PARAR  PISO AL   COLICIONAR  CON  BASE
+       parar1 = 0;
+       parar2 = 0;
+       espacio_piso2 = 0;
+       espacio_piso1 = 0;
+       a = 0 ;
+       b = 0 ;
+       c = 0 ;
+       baseprimal_secundario_uno=false;
+       baseprimal_secundario_dos=false;
+       baseprimal_secundario_tres=false;
+       baseprimal_secundario_cuatro=false;
+       baseprimal_secundario_cinco=false;
+       mochilaPuntero=0;
+
+       tres=null;
+       cuatro=null;
+
                juego.physics.startSystem(Phaser.Physics.ARCADE);
                fondoDegra = new Phaser.Rectangle(0, 0,largo, altura);
                cielo = juego.add.tileSprite(0,0,juego.width,juego.height,'cielo');
@@ -128,7 +144,7 @@ var Juego1_1 = {
                b_home=this.add.button(b_siguiente.position.x+64,ye,'b_home',this.Home,this);
                b_actualizar=this.add.button(b_home.position.x+64,ye,'b_actualizar',this.Actualizar,this);
                cholito_negro=juego.add.tileSprite(juego.width-400,ye,64,64,'cholito_negro');
-               scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+20,300,40,'scroolBar');
+               scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+20,300,40,'scroolBar2');
 
                 var base = Math.floor((Math.random() * 2) + 2);
 
@@ -161,9 +177,9 @@ var Juego1_1 = {
 
          for (var i = 1; i <=2; i++)
          {
-                   var ran= Math.floor(Math.random()*4)+1;
+                   var ran= Math.floor(Math.random()*2)+1;
 
-                   if (ran==4&& b==0) {
+                   if (ran==1&& b==0) {
            cuatro=juego.add.sprite(25,juego.height/2-200,'cuatro');
            juego.physics.arcade.enable([cuatro]);
            cuatro.body.allowGravity=false;
@@ -177,7 +193,7 @@ var Juego1_1 = {
 
            b=1;
          }
-                   if (ran==3&& c==0) {
+                   if (ran==2&& c==0) {
           tres=juego.add.sprite(0,juego.height/2-200,'tres');
           juego.physics.arcade.enable([tres]);
           tres.body.allowGravity=false;
@@ -228,9 +244,9 @@ var Juego1_1 = {
            dos.input.boundsRect = fondoDegra;
 
            for (var i = 1; i <=2; i++) {
-           var ran= Math.floor(Math.random()*4)+1;
+           var ran= Math.floor(Math.random()*2)+1;
 
-           if (ran==4&& b==0) {
+           if (ran==1&& b==0) {
            cuatro=juego.add.sprite(25,juego.height/2-200,'cuatro');
            juego.physics.arcade.enable([cuatro]);
            cuatro.body.allowGravity=false;
@@ -244,7 +260,7 @@ var Juego1_1 = {
 
            b=1;
            }
-          if (ran==3&& c==0) {
+          if (ran==2&& c==0) {
           cinco=juego.add.sprite(0,juego.height/2-200,'cinco');
           juego.physics.arcade.enable([cinco]);
           cinco.body.allowGravity=false;
@@ -283,13 +299,14 @@ var Juego1_1 = {
                mochila.body.allowGravity=false;
                mochila.body.inmovable=true;
 
-               txtPunto1 = juego.add.text(200, 20, "0", {font: "30px Arial", fill: "#FFF"});
-               txtPunto2 = juego.add.text(500, 20, "0", {font: "30px Arial", fill: "#FFF"});
+               txtPunto1 = juego.add.text(200, 20, "0", {font: "20px Arial", fill: "#FFF"});
+               txtPunto2 = juego.add.text(500, 20, "0", {font: "20px Arial", fill: "#FFF"});
                cholito1.animations.play('stop');
              cursor = juego.input.keyboard.createCursorKeys();
 
 
     },
+    Actualizar:function(){this.state.start('Actualis');},
     update:function()
     {
 
@@ -376,7 +393,8 @@ var Juego1_1 = {
               }
             }
                      txtPunto1.text=" NIVEL 1 PUNTOS:";
-                     txtPunto2.text=0;
+                     txtPunto2.text= uno +" *"+dos+" *"+tres +" *"+ cuatro +" *"+ cinco;
+
 
 
 
@@ -503,7 +521,7 @@ var Juego1_1 = {
                   {
                                piso1.body.velocity.x=0;
                                var m =piso1.position.x;
-                               piso1.position.x=m-5;
+                               piso1.position.x=m-12;
                                espacio_piso2=1;
 
                   }
@@ -520,7 +538,7 @@ var Juego1_1 = {
              if(espacio_piso1==0){
                                    piso2.body.velocity.x=0;
                                    var m =piso2.position.x;
-                                   piso2.position.x=m+5;
+                                   piso2.position.x=m+12;
                                    espacio_piso1=1;
 
                                }

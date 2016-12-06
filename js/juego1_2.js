@@ -81,7 +81,7 @@ var Juego1_2 = {
                juego.load.image('Mib_home','img/home.png');
 
                juego.load.image('Micholito_negro','img/cholito_negro.png');
-               juego.load.image('MiscroolBar2','img/barras/barra2.png');
+               juego.load.image('MiscroolBar2','img/barras/barra3.png');
 
     },
     create:function()
@@ -218,7 +218,7 @@ var Juego1_2 = {
 
                  for (var i = 1; i <=2; i++)
                  {
-                           var ran= Math.floor(Math.random()*3)+1;
+                           var ran= Math.floor(Math.random()*2)+1;
 
                            if (ran==1&& e==0) {
                                                     Micuatro=juego.add.sprite(25,juego.height/2-200,'Micuatro');
@@ -229,6 +229,7 @@ var Juego1_2 = {
                                                     Micuatro.anchor.set(0.5);
                                                     Micuatro.input.enableDrag();
                                                     Micuatro.input.boundsRect = MifondoDegra;
+                                                    
 
                                                     e=1;
                                                    }
@@ -241,6 +242,7 @@ var Juego1_2 = {
                                                     Miuno.anchor.set(0.5);
                                                     Miuno.input.enableDrag();
                                                     Miuno.input.boundsRect = MifondoDegra;
+                                                    alert("u");
 
 
                                                     f=1;
@@ -290,7 +292,8 @@ var Juego1_2 = {
       Mitiempo = juego.time.events.loop(0,this.chocoTres,this);
       Mitiempo = juego.time.events.loop(0,this.chocoCuatro,this);
       Mitiempo = juego.time.events.loop(0,this.chocoCinco,this);
-
+      Mitiempo = juego.time.events.loop(4000, this.PasarNivel, this);
+       Micholito.body.velocity.x= 0;
       juego.physics.arcade.collide(Micholito,Mipiso1);
       juego.physics.arcade.collide(Micholito,Mipiso2);
       juego.physics.arcade.collide(Micholito,Miuno);
@@ -312,12 +315,13 @@ var Juego1_2 = {
       juego.physics.arcade.overlap(MibasePrimal, Mitres, this.choco_tres_basePrimal, null, this);
       juego.physics.arcade.overlap(MibasePrimal, Micuatro, this.choco_cuatro_basePrimal, null, this);
 
+      juego.physics.arcade.overlap(Miuno, Micuatro, this.choco_uno_cuatro, null, this);
       juego.physics.arcade.overlap(Midos, Mitres, this.choco_dos_tres, null, this);
       juego.physics.arcade.overlap(Midos, Miuno, this.choco_dos_uno, null, this);
       juego.physics.arcade.overlap(Midos, Micuatro, this.choco_dos_cuatro, null, this);
       juego.physics.arcade.overlap(Mitres, Miuno, this.choco_tres_uno, null, this);
       juego.physics.arcade.overlap(Mitres, Micuatro, this.choco_tres_cuatro, null, this);
-      juego.physics.arcade.overlap(Miuno, Micuatro, this.choco_uno_cuatro, null, this);
+
 
 
 
@@ -453,12 +457,7 @@ var Juego1_2 = {
           }
 
         }
-        else if (Mibaseprimal_secundario_uno && Mibaseprimal_secundario_cuatro!=true) {
-          Micholito.animations.play('stop');
-          Micholito.body.velocity.x=0;
-          lapizPuntero==0
 
-        }
 
       }
 
@@ -467,9 +466,17 @@ var Juego1_2 = {
 
 
    Mitexto1.text=Mibaseprimal_secundario_uno;
-  Mitexto2.text=Mibaseprimal_secundario_cuatro;
+  Mitexto2.text=Mibaseprimal_secundario_tres;
 
     },
+
+    PasarNivel:function()
+    {
+      if (Milapiz.position.y==30)
+      {
+           this.state.start('Juego1_3');
+      }
+  },
 
     choco_uno_cholito:function(){Miuno.body.allowGravity=false; Miuno.body.immovable=true;},
     choco_dos_cholito:function(){Midos.body.allowGravity=false; Midos.body.immovable=true;},
