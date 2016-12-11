@@ -4,6 +4,7 @@ var alt = screen.height-20;
 var juego = new Phaser.Game(lar,alt,Phaser.CANVAS,'bloque_juego');
 juego.state.add('Menu',Menu);
 juego.state.add('Nivel',Nivel);
+juego.state.add('Actualis',Actualis);
 juego.state.add('Juego1_1',Juego1_1);
 juego.state.add('Juego1_2',Juego1_2);
 juego.state.add('Juego1_3',Juego1_3);
