@@ -49,7 +49,11 @@ var Juego1_2={
   },
   create:function()
   {
-alert("juego2");
+//alert("juego2");
+t1 = juego.add.text(20, 2, "0", {font: "15px Arial", fill: "#000000"});
+t2 = juego.add.text(100, 2, "0", {font: "15px Arial", fill: "#000000"});
+t1.text='NIVEL: 1';
+t2.text='SUBNIVEL: 2';
               juego.physics.startSystem(Phaser.Physics.ARCADE);
 //--------------------------------------CHOLITO---------------------------------------------------------
               M_cholito=juego.add.sprite(50,205,'M_cholito');
@@ -65,12 +69,12 @@ alert("juego2");
                barra_menu=juego.add.tileSprite(0,juego.height-60,juego.width,100,'bar_menu');
                var ye = (barra_menu.position.y)+4;
                var ex =(barra_menu.position.x)+4;
-               b_atras=this.add.button(ex,ye,'b_atras',this.Atras,this);
-               b_siguiente=this.add.button(b_atras.position.x+64,ye,'b_siguiente',this.Siguiente,this);
-               b_home=this.add.button(b_siguiente.position.x+64,ye,'b_home',this.Home,this);
+            //   b_atras=this.add.button(ex,ye,'b_atras',this.Atras,this);
+            //   b_siguiente=this.add.button(b_atras.position.x+64,ye,'b_siguiente',this.Siguiente,this);
+              // b_home=this.add.button(b_siguiente.position.x+64,ye,'b_home',this.Home,this);
                b_actualizar=this.add.button(b_home.position.x+64,ye,'b_actualizar',this.Actualizar,this);
                cholito_negro=juego.add.tileSprite(juego.width-400,ye,64,64,'cholito_negro');
-               scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+10,300,40,'scroolBar');
+               scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+10,300,40,'scroolBar3');
 
                b_atras.scale.setTo(0.8,0.8);
                b_siguiente.scale.setTo(0.8,0.8);
@@ -134,6 +138,14 @@ alert("juego2");
                                   M_item.events.onDragStop.add(this.fixLocation);   // Limitar la ubicación a solo las 2 columnas.
                }
 
+  },
+  Actualizar:function()
+  {
+    M_actualis=1;
+    this.state.start('Actualis');
+  },
+  Home:function(){
+    //this.state.start('Nivel');
   },
 
   fixLocation:function(M_item)

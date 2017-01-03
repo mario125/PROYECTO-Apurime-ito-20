@@ -19,10 +19,10 @@
 
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="usuario" type="text" class="validate" length="10" required>
-                  <label for="first-name">USUARIO</label>
+                  <input id="usuario" type="text" class="validate " length="10" required>
+                  <label  for="first-name">USUARIO</label>
                 </div>
-                </div>
+              </div>
 
             <div class="row">
                <div class="input-field col s12 " >
@@ -49,7 +49,7 @@
             <div class="row">
               <div class="col s12">
 
-                    <button id="submitBtn" class="btn waves-effect waves-light" type="submit" name="action">login
+                    <button id="submitBtn"style="background:orange" class="btn waves-effect orange waves-light" type="submit" name="action">login
            </div>
           </div>
 
@@ -79,13 +79,13 @@
 
 
         connect = window.XMLHttpRequest ? new XMLHttpRequest() :  ActiveXObject('Microsoft.XMLHTTP');
-       alert(user+pass+session);
+       
 
         if(user!=''&&pass!='')
         {
             connect.onreadystatechange =function(){
             if(connect.readyState==4&&connect.status==200){
-                alert(connect.responseText);
+                
                 if(parseInt(connect.responseText) ==1){
 
                     //conecatado con exito

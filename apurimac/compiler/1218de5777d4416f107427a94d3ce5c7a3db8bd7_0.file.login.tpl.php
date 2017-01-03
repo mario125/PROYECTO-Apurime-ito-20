@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2016-12-28 09:41:46
+<?php /* Smarty version 3.1.27, created on 2017-01-02 16:12:06
          compiled from "C:\xampp\htdocs\apurimac\styles\templates\public\login.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:659658637aca0b5d58_68651845%%*/
+/*%%SmartyHeaderCode:19573586a6dc6bd7a98_08866459%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,20 +9,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1218de5777d4416f107427a94d3ce5c7a3db8bd7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\apurimac\\styles\\templates\\public\\login.tpl',
-      1 => 1482914502,
+      1 => 1483369915,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '659658637aca0b5d58_68651845',
+  'nocache_hash' => '19573586a6dc6bd7a98_08866459',
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_58637aca138583_42869287',
+  'unifunc' => 'content_586a6dc6c4c528_54710115',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_58637aca138583_42869287')) {
-function content_58637aca138583_42869287 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_586a6dc6c4c528_54710115')) {
+function content_586a6dc6c4c528_54710115 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '659658637aca0b5d58_68651845';
+$_smarty_tpl->properties['nocache_hash'] = '19573586a6dc6bd7a98_08866459';
 echo $_smarty_tpl->getSubTemplate ('overall/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
@@ -48,10 +48,10 @@ echo $_smarty_tpl->getSubTemplate ('overall/header.tpl', $_smarty_tpl->cache_id,
 
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="usuario" type="text" class="validate" length="10" required>
-                  <label for="first-name">USUARIO</label>
+                  <input id="usuario" type="text" class="validate " length="10" required>
+                  <label  for="first-name">USUARIO</label>
                 </div>
-                </div>
+              </div>
 
             <div class="row">
                <div class="input-field col s12 " >
@@ -78,7 +78,7 @@ echo $_smarty_tpl->getSubTemplate ('overall/header.tpl', $_smarty_tpl->cache_id,
             <div class="row">
               <div class="col s12">
 
-                    <button id="submitBtn" class="btn waves-effect waves-light" type="submit" name="action">login
+                    <button id="submitBtn"style="background:orange" class="btn waves-effect orange waves-light" type="submit" name="action">login
            </div>
           </div>
 
@@ -111,13 +111,13 @@ echo $_smarty_tpl->getSubTemplate ('overall/header.tpl', $_smarty_tpl->cache_id,
 
 
         connect = window.XMLHttpRequest ? new XMLHttpRequest() :  ActiveXObject('Microsoft.XMLHTTP');
-       alert(user+pass+session);
+       
 
         if(user!=''&&pass!='')
         {
             connect.onreadystatechange =function(){
             if(connect.readyState==4&&connect.status==200){
-                alert(connect.responseText);
+                
                 if(parseInt(connect.responseText) ==1){
 
                     //conecatado con exito

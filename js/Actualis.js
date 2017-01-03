@@ -53,6 +53,7 @@ Actualis = {
   {
 
     this.state.start('Juego1_1');
+    //jjajajajaja
 
   }
 

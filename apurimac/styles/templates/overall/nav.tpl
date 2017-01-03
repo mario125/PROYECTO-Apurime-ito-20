@@ -2,7 +2,7 @@
 <div class="navbar-fixed ">
   <nav class="blue">
     <div class="nav-wrapper ">
-      <a href="#!" class="brand-logo letra white-text">Logo</a>
+      <a href="#!" class="brand-logo letra white-text" ><img class="circle" src="styles/galeria/cho.png"></a>
      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons letra white-text">menu</i></a>
       <ul class="right hide-on-med-and-down letra ">
 
@@ -17,14 +17,14 @@
 
          {else}
          <li><a href="#">PERFIL</a></li>
-        <li><a href="#">JUGAR</a></li>
+        <li><a href="?view=usuario">JUGAR</a></li>
 
          {/if}
 
         <li><a class="dropdown-button white-text" href="#!" data-activates="dropdown1">{$smarty.session.nombres}  {$smarty.session.apellidos}<i class="material-icons right">arrow_drop_down</i></a></li>
         <li><a href="sass.html">{$smarty.session.cargo}</a></li>
          {else}
-       <li><a class=" white-text"href="?view=login"><i class="material-icons right">person_pin</i>login</a></li>
+       <li><a class=" white-text" href="?view=login"><i class="material-icons right">person_pin</i>LOGIN</a></li>
 
        {/if}
 
@@ -70,7 +70,7 @@
 
 
     {else}
-    <li><a class=" white-text"href="?view=login"><i class="material-icons right waves-effect">person_pin</i>login</a></li>
+    <li><a class=" white-text" href="?view=login" ><i class="material-icons red waves-effect">person_pin</i>login</a></li>
 
 
 

@@ -50,7 +50,11 @@ var Juego1_4={
   },
   create:function()
   {
-alert("juego4");
+    //alert("juego4");
+    t1 = juego.add.text(20, 2, "0", {font: "15px Arial", fill: "#000000"});
+    t2 = juego.add.text(100, 2, "0", {font: "15px Arial", fill: "#000000"});
+    t1.text='NIVEL: 2';
+    t2.text='SUBNIVEL: 4';
               juego.physics.startSystem(Phaser.Physics.ARCADE);
 //--------------------------------------CHOLITO---------------------------------------------------------
                K_cholito=juego.add.sprite(50,205,' K_cholito');
@@ -71,7 +75,7 @@ alert("juego4");
                b_home=this.add.button(b_siguiente.position.x+64,ye,'b_home',this.Home,this);
                b_actualizar=this.add.button(b_home.position.x+64,ye,'b_actualizar',this.Actualizar,this);
                cholito_negro=juego.add.tileSprite(juego.width-400,ye,64,64,'cholito_negro');
-               scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+10,300,40,'scroolBar');
+               scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+10,300,40,'scroolBar5');
 
                b_atras.scale.setTo(0.8,0.8);
                b_siguiente.scale.setTo(0.8,0.8);
@@ -135,6 +139,14 @@ alert("juego4");
                                    K_item.events.onDragStop.add(this.fixLocation);   // Limitar la ubicación a solo las 2 columnas.
                }
 
+  },
+  Actualizar:function()
+  {
+    K_actualis=1;
+    this.state.start('Actualis');
+  },
+  Home:function(){
+    //  this.state.start('Nivel');
   },
 
   fixLocation:function( K_item)
@@ -218,7 +230,7 @@ alert("juego4");
 //--------------------------------------SUMAR PULSACION Y  SUMAR ------------------------------------------------------
                                   K_pulsacion++;
                                   K_suma= K_uno+ K_dos+ K_tres+ K_cuatro+ K_cinco+ K_seis+K_siete;
-                                  alert(K_suma);
+
 
 //-----------------------------------------EVENTOS----------------------------------------
                                        if ( K_base==8) {

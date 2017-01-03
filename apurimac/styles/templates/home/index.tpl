@@ -3,17 +3,56 @@
   <body>
 
   {include 'overall/nav.tpl'}
-    <div class="container" style="margin-top: 100px;">
-      <div class="jumbotron">
-        <h1>Bienvenido al curso!</h1>
-        <p class="lead">Plantilla de ejemplo para iniciar el curso de php avanzado.</p>
-        <p><a class="btn btn-lg btn-success" href="http://www.prinick.com" role="button">Comenzar!</a></p>
 
+<div class="container">
+<div class="row">
+   <div class="col s12 col m8 push-m2  col l6 push-l3">
 
+          <div class="col s12">
+          </br>
+            </br>
+              </br>
+                </br>
+                  </br>
+                    </br>
+                      </br>
+                        </br>
+                          </br>
+                            </br>
+                              </br>
+                                </br>
+                                  </br>
+                                    </br>
+                                      </br>
+                                        </br>
+                      </br>
+                     <button id="sub"style="background:orange" class="btn waves-effect orange waves-light" type="submit" name="action">login
+           </div>
 
-      </div>
+    </div>
+    </div>
     </div>
 
+
+
+
+
+
+
+
+
+
   {include 'overall/footer.tpl'}
+<script>
+  window.onload=function(){
+    document.getElementById('sub').onclick=function(){
+      location.href= '?view=login';
+    }
+  }
+
+
+
+  </script>
+
   </body>
 </html>

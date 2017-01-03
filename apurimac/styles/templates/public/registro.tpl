@@ -112,13 +112,13 @@
 
 
         connect = window.XMLHttpRequest ? new XMLHttpRequest() :  ActiveXObject('Microsoft.XMLHTTP');
-       alert(nombres+apellidos+sexo+cargo+usuario+password);
+       //alert(nombres+apellidos+sexo+cargo+usuario+password);
 
         if(nombres!=''&&apellidos!=''&&sexo!=''&&cargo!=''&&nick!=''&&password!='')
         {
             connect.onreadystatechange =function(){
             if(connect.readyState==4&&connect.status==200){
-                alert(connect.responseText);
+              //  alert(connect.responseText);
                 if(parseInt(connect.responseText) ==1){
 
                     //conecatado con exito

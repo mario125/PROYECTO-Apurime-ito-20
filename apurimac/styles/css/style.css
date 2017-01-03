@@ -6,6 +6,7 @@
 	top: -2.5em;
 	max-width: 140px;
 	max-height: 140px;
+
 }
 
 
@@ -14,6 +15,15 @@
 
 }
 #submitBtn{
+	background: #13d4b6;
+	width: 100%;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 1.5em;
+	height: 55px;
+}
+
+#sub{
 	background: #13d4b6;
 	width: 100%;
 	text-transform: uppercase;

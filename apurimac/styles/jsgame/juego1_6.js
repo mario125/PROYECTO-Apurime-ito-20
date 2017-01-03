@@ -53,7 +53,11 @@ var Juego1_6={
   },
   create:function()
   {
-alert("Juego1_6");
+   //alert("Juego1_6");
+   t1 = juego.add.text(20, 2, "0", {font: "15px Arial", fill: "#000000"});
+   t2 = juego.add.text(100, 2, "0", {font: "15px Arial", fill: "#000000"});
+   t1.text='NIVEL: 3';
+   t2.text='SUBNIVEL: 6';
               juego.physics.startSystem(Phaser.Physics.ARCADE);
 //--------------------------------------CHOLITO---------------------------------------------------------
                S_cholito=juego.add.sprite(50,205,' S_cholito');
@@ -74,7 +78,7 @@ alert("Juego1_6");
                b_home=this.add.button(b_siguiente.position.x+64,ye,'b_home',this.Home,this);
                b_actualizar=this.add.button(b_home.position.x+64,ye,'b_actualizar',this.Actualizar,this);
                cholito_negro=juego.add.tileSprite(juego.width-400,ye,64,64,'cholito_negro');
-               scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+10,300,40,'scroolBar');
+               scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+10,300,40,'scroolBar7');
 
                b_atras.scale.setTo(0.8,0.8);
                b_siguiente.scale.setTo(0.8,0.8);
@@ -138,6 +142,14 @@ alert("Juego1_6");
                                    S_item.events.onDragStop.add(this.fixLocation);   // Limitar la ubicación a solo las 2 columnas.
                }
 
+  },
+  Actualizar:function()
+  {
+    S_actualis=1;
+    this.state.start('Actualis');
+  },
+  Home:function(){
+  //    this.state.start('Nivel');
   },
 
   fixLocation:function( S_item)
@@ -231,19 +243,19 @@ alert("Juego1_6");
 //--------------------------------------SUMAR PULSACION Y  SUMAR ------------------------------------------------------
                                   S_pulsacion++;
                                   S_suma= S_uno+ S_dos+ S_tres+ S_cuatro+ S_cinco+ S_seis+S_siete+S_ocho+S_nueve;
-                                  alert(S_suma);
+                                //  alert(S_suma);
 
 
 //-----------------------------------------EVENTOS----------------------------------------
-                                       if ( S_base==101) {
-                                                       if ( S_pulsacion==2&& S_suma==10) {
+                                       if ( S_base==12) {
+                                                       if ( S_pulsacion==3&& S_suma==12) {
                                                               S_check=juego.add.sprite(juego.height/2+45,juego.width/2-300,' S_check');
                                                               S_cholito.body.velocity.x= +100;
                                                               S_cholito.animations.play('derecha');
                                                               S_mal_bien=1;
 
                                                        }
-                                                       if ( S_pulsacion==2&& S_suma!=10) {
+                                                       if ( S_pulsacion==3&& S_suma!=12) {
                                                                S_cruz=juego.add.sprite(juego.height/2+45,juego.width/2-300,' S_cruz');
                                                                S_cholito.animations.play('llora');
                                                                S_mal_bien=2;
@@ -251,15 +263,15 @@ alert("Juego1_6");
                                                        }
 
                                        }
-                                       if ( S_base==111) {
-                                                        if ( S_pulsacion==2&& S_suma==11) {
+                                       if ( S_base==13) {
+                                                        if ( S_pulsacion==3&& S_suma==13) {
                                                            S_check=juego.add.sprite(juego.height/2+45,juego.width/2-300,' S_check');
                                                            S_cholito.body.velocity.x= +100;
                                                            S_cholito.animations.play('derecha');
                                                            S_mal_bien=1;
 
                                                         }
-                                                        if ( S_pulsacion==2&& S_suma!=11) {
+                                                        if ( S_pulsacion==3&& S_suma!=13) {
                                                            S_cruz=juego.add.sprite(juego.height/2+45,juego.width/2-300,' S_cruz');
                                                            S_cholito.animations.play('llora');
                                                            S_mal_bien=2;
@@ -309,7 +321,7 @@ alert("Juego1_6");
    if (k==fin) {
 
            var connect,form,result,subnivel=2;
-           form='jugador='+jugador+'&nivel='+3+'&sNivel='+6;
+           form='jugador='+jugador+'&nivel='+4+'&sNivel='+7;
 
 
            connect = window.XMLHttpRequest ? new XMLHttpRequest() :  ActiveXObject('Microsoft.XMLHTTP');
@@ -323,6 +335,10 @@ alert("Juego1_6");
                    if(parseInt(connect.responseText) ==1){
 
                         S_pasar=1;
+                        puntoDB=4;
+                        nivel=4;
+
+                        sNivel=7;
 
                    }
                    else{
@@ -349,7 +365,7 @@ alert("Juego1_6");
    }
    if (S_pasar==1) {
 
-     this.state.start('Juego1_6');
+     this.state.start('Nivel');
 
      }
 

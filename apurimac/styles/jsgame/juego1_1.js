@@ -50,7 +50,11 @@ var Juego1_1 ={
   },
   create:function()
   {
-                alert("juego1");
+    t1 = juego.add.text(20, 2, "0", {font: "15px Arial", fill: "#000000"});
+    t2 = juego.add.text(100, 2, "0", {font: "15px Arial", fill: "#000000"});
+    t1.text='NIVEL: 1';
+    t2.text='SUBNIVEL: 1';
+              //  alert("juego1");
                juego.physics.startSystem(Phaser.Physics.ARCADE);
 
 
@@ -77,12 +81,12 @@ var Juego1_1 ={
     var ye = (barra_menu.position.y)+4;
     var ex =(barra_menu.position.x)+4;
 
-    b_atras=this.add.button(ex,ye,'b_atras',this.Atras,this);
-    b_siguiente=this.add.button(b_atras.position.x+64,ye,'b_siguiente',this.Siguiente,this);
-    b_home=this.add.button(b_siguiente.position.x+64,ye,'b_home',this.Home,this);
+  //  b_atras=this.add.button(ex,ye,'b_atras',this.Atras,this);
+  //  b_siguiente=this.add.button(b_atras.position.x+64,ye,'b_siguiente',this.Siguiente,this);
+  //  b_home=this.add.button(b_siguiente.position.x+64,ye,'b_home',this.Home,this);
     b_actualizar=this.add.button(b_home.position.x+64,ye,'b_actualizar',this.Actualizar,this);
     cholito_negro=juego.add.tileSprite(juego.width-400,ye,64,64,'cholito_negro');
-    scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+10,300,40,'scroolBar');
+    scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+10,300,40,'scroolBar2');
 
     b_atras.scale.setTo(0.8,0.8);
     b_siguiente.scale.setTo(0.8,0.8);
@@ -166,16 +170,22 @@ for (var i = 0; i < 4; i++)
     // Limitar la ubicación de la gota a solo las 2 columnas.
     item.events.onDragStop.add(this.fixLocation);
 }
-            t1 = juego.add.text(200, 150, "0", {font: "20px Arial", fill: "#FFF"});
-            t2 = juego.add.text(300, 150, "0", {font: "20px Arial", fill: "#FFF"});
+
 
 
 
   },
+  Actualizar:function()
+  {
+    Actualis1=1;
+
+    this.state.start('Actualis');
+  },
+
   fixLocation:function(item)
 {
   if (mal_bien==1||mal_bien==2) {
-    t2.text=text = item.name;
+    
 
 
 

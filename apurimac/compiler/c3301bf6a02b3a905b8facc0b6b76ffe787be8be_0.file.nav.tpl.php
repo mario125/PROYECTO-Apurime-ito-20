@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2016-12-29 06:40:39
+<?php /* Smarty version 3.1.27, created on 2017-01-03 04:23:46
          compiled from "C:\xampp\htdocs\apurimac\styles\templates\overall\nav.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:72995864a1d7ae6757_92174037%%*/
+/*%%SmartyHeaderCode:16219586b19429a88d1_09261665%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,26 +9,26 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c3301bf6a02b3a905b8facc0b6b76ffe787be8be' => 
     array (
       0 => 'C:\\xampp\\htdocs\\apurimac\\styles\\templates\\overall\\nav.tpl',
-      1 => 1482989745,
+      1 => 1483413820,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '72995864a1d7ae6757_92174037',
+  'nocache_hash' => '16219586b19429a88d1_09261665',
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5864a1d7b99544_96088328',
+  'unifunc' => 'content_586b1942a44007_90049027',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5864a1d7b99544_96088328')) {
-function content_5864a1d7b99544_96088328 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_586b1942a44007_90049027')) {
+function content_586b1942a44007_90049027 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '72995864a1d7ae6757_92174037';
+$_smarty_tpl->properties['nocache_hash'] = '16219586b19429a88d1_09261665';
 ?>
 
 <div class="navbar-fixed ">
   <nav class="blue">
     <div class="nav-wrapper ">
-      <a href="#!" class="brand-logo letra white-text">Logo</a>
+      <a href="#!" class="brand-logo letra white-text" ><img class="circle" src="styles/galeria/cho.png"></a>
      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons letra white-text">menu</i></a>
       <ul class="right hide-on-med-and-down letra ">
 
@@ -43,7 +43,7 @@ $_smarty_tpl->properties['nocache_hash'] = '72995864a1d7ae6757_92174037';
 
          <?php } else { ?>
          <li><a href="#">PERFIL</a></li>
-        <li><a href="#">JUGAR</a></li>
+        <li><a href="?view=usuario">JUGAR</a></li>
 
          <?php }?>
 
@@ -53,7 +53,7 @@ $_smarty_tpl->properties['nocache_hash'] = '72995864a1d7ae6757_92174037';
         <li><a href="sass.html"><?php echo $_SESSION['cargo'];?>
 </a></li>
          <?php } else { ?>
-       <li><a class=" white-text"href="?view=login"><i class="material-icons right">person_pin</i>login</a></li>
+       <li><a class=" white-text" href="?view=login"><i class="material-icons right">person_pin</i>LOGIN</a></li>
 
        <?php }?>
 
@@ -101,7 +101,7 @@ $_smarty_tpl->properties['nocache_hash'] = '72995864a1d7ae6757_92174037';
 
 
     <?php } else { ?>
-    <li><a class=" white-text"href="?view=login"><i class="material-icons right waves-effect">person_pin</i>login</a></li>
+    <li><a class=" white-text" href="?view=login" ><i class="material-icons red waves-effect">person_pin</i>login</a></li>
 
 
 

@@ -29,6 +29,9 @@ var boton2;
 var boton3;
 var boton4;
 var boton5;
+var t1;
+var t2;
+var copa;
 
 var Nivel ={
 
@@ -38,6 +41,7 @@ preload:function()
    juego.load.image('cielo','styles/imagesgame/degra.png');
 
    juego.load.image('nuve','styles/imagesgame/nuves.png');
+   juego.load.image('copa','styles/imagesgame/copa.png');
    juego.load.image('bar_menu','styles/imagesgame/barra_menu.png');
    juego.load.image('pasto','styles/imagesgame/piso.png');
 
@@ -50,6 +54,15 @@ preload:function()
    juego.load.image('cholito_negro','styles/imagesgame/cholito_negro.png');
    juego.load.image('scroolBar','styles/imagesgame/barras/barra1.png');
    juego.load.image('scroolBar2','styles/imagesgame/barras/barra2.png');
+   juego.load.image('scroolBar3','styles/imagesgame/barras/barra3.png');
+   juego.load.image('scroolBar4','styles/imagesgame/barras/barra4.png');
+   juego.load.image('scroolBar5','styles/imagesgame/barras/barra5.png');
+   juego.load.image('scroolBar6','styles/imagesgame/barras/barra6.png');
+   juego.load.image('scroolBar7','styles/imagesgame/barras/barra7.png');
+   juego.load.image('scroolBar8','styles/imagesgame/barras/barra8.png');
+   juego.load.image('scroolBar9','styles/imagesgame/barras/barra9.png');
+   juego.load.image('scroolBar10','styles/imagesgame/barras/barra10.png');
+   juego.load.image('scroolBar11','styles/imagesgame/barras/barra11.png');
 
    juego.load.spritesheet('cholito1','styles/imagesgame/sprite_comple.png',100,200);
    juego.load.spritesheet('piramide','styles/imagesgame/n_sprite2.png',500,500);
@@ -68,7 +81,8 @@ preload:function()
 create:function()
 {
   //alert("nivel:"+sNivel);
-  //alert("subnivel:"+nivel);
+//  alert("subnivel:"+nivel);
+
 
 
    cielo = juego.add.tileSprite(0,0,juego.width,juego.height,'cielo');
@@ -79,9 +93,9 @@ create:function()
 
     pasto=juego.add.tileSprite(0,juego.height-170,juego.width,150,'pasto');
 
-    cholito1 =juego.add.sprite((juego.width/2)-300,(pasto.position.y)-70,'cholito1');
-    cholito1.animations.add('cholito1', [5,6, 7, 8]);
-    cholito1.animations.play('cholito1', 4, true);
+    //cholito1 =juego.add.sprite((juego.width/2)-300,(pasto.position.y)-70,'cholito1');
+    //cholito1.animations.add('cholito1', [5,6, 7, 8]);
+    //cholito1.animations.play('cholito1', 4, true);
 
     //remplazando cada nivel 0  por  1
      for (var x=0;x<puntoDB;x++)
@@ -120,6 +134,7 @@ create:function()
         piramide.animations.play('piramide', 4, true);
       }
 
+
     }
 
 
@@ -146,12 +161,32 @@ create:function()
     boton5     = this.add.button((piramide.position.x)+440,(piramide.position.y)+185,'boton5',this.Nivel5 ,this);
     boton5.scale.setTo(0.4,0.4);
 
+
+
+
+
+
+    cholito_negro=juego.add.tileSprite(juego.width-400,ye,64,64,'cholito_negro');
+
+
+
+
     //MANO
     if (nivel==0||nivel==1&&sNivel==0||sNivel==1||sNivel==2) {
         mano =juego.add.sprite((piramide.position.x)+29,(piramide.position.y)+480,'mano');
         mano.animations.add('mano', [0,1]);
         mano.animations.play('mano', 2, true);
         mano.scale.setTo(0.7,0.7);
+        Materialize.toast('USTED  VA EN EL NIVEL 1', 3000, 'orange')
+        if (sNivel==0) {
+        scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+20,300,40,'scroolBar');
+        }
+        if (sNivel==1) {
+        scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+20,300,40,'scroolBar2');
+        }
+        if (sNivel==2) {
+        scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+20,300,40,'scroolBar3');
+        }
 
     }
 
@@ -160,6 +195,13 @@ create:function()
         mano.animations.add('mano', [0,1]);
         mano.animations.play('mano', 2, true);
         mano.scale.setTo(0.7,0.7);
+        Materialize.toast('USTED YA VA EN EL NIVEL 2', 3000, 'orange')
+        if (sNivel==3) {
+        scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+20,300,40,'scroolBar4');
+        }
+        if (sNivel==4) {
+        scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+20,300,40,'scroolBar5');
+        }
 
     }
 
@@ -168,6 +210,13 @@ create:function()
         mano.animations.add('mano', [0,1]);
         mano.animations.play('mano', 2, true);
         mano.scale.setTo(0.7,0.7);
+        Materialize.toast('USTED YA VA EN EL NIVEL 3', 3000, 'orange')
+        if (sNivel==5) {
+        scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+20,300,40,'scroolBar6');
+        }
+        if (sNivel==6) {
+        scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+20,300,40,'scroolBar7');
+        }
 
     }
     if (nivel==4 && sNivel==7 ||sNivel==8) {
@@ -176,22 +225,43 @@ create:function()
         mano.animations.add('mano', [0,1]);
         mano.animations.play('mano', 2, true);
         mano.scale.setTo(0.7,0.7);
-        alert("ai4");
+        Materialize.toast('USTED YA VA EN EL NIVEL 4', 3000, 'orange')
+        if (sNivel==7) {
+        scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+20,300,40,'scroolBar8');
+        }
+        if (sNivel==8) {
+        scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+20,300,40,'scroolBar9');
+        }
+
+
     }
-    if (nivel==5 && sNivel==9 ||sNivel==10) {
+    if (nivel==5 && sNivel==9) {
 
         mano =juego.add.sprite((piramide.position.x)+444,(piramide.position.y)+209,'mano');
         mano.animations.add('mano', [0,1]);
         mano.animations.play('mano', 2, true);
         mano.scale.setTo(0.7,0.7);
-        alert("ai4");
+       Materialize.toast('USTED YA VA EN EL NIVEL 5', 3000, 'orange')
+       if (sNivel==9) {
+       scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+20,300,40,'scroolBar10');
+       }
+       if (sNivel==10) {
+       scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+20,300,40,'scroolBar11');
+       }
+    }
+    if (nivel==6) {
+        Materialize.toast('FELICIDADESJUEGO CONCLUIDO... :) ...', 3000, 'red')
+          copa=juego.add.sprite(juego.height/2,juego.width/2-300,'copa');
+          copa.scale.setTo(0.7,0.7);
+          scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+20,300,40,'scroolBar11');
+          //mano.position.x=2000;
+
     }
 
 
 
 
-    cholito_negro=juego.add.tileSprite(juego.width-400,ye,64,64,'cholito_negro');
-    scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+20,300,40,'scroolBar');
+
 
     b_atras.scale.setTo(0.8,0.8);
     b_siguiente.scale.setTo(0.8,0.8);
@@ -199,15 +269,7 @@ create:function()
     b_actualizar.scale.setTo(0.8,0.8);
     cholito_negro.scale.setTo(1,0.8);
     scroolBar.scale.setTo(1,0.8);
-    cholito1.scale.setTo(0.7,0.6);
     piramide.scale.setTo(1,1);
-
-
-
-
-
-
-
 
 
 
@@ -240,13 +302,14 @@ Nivel1:function()
     if (sNivel==0) {
       this.state.start('Juego1_1');
 
+
     }
     if (sNivel==2) {
       this.state.start('Juego1_2');
     }
 
   }else {
-    Materialize.toast('NIVEL CONCLUIDO', 3000, 'red')
+  //  Materialize.toast('NIVEL CONCLUIDO', 3000, 'red')
   }
 
 },
@@ -262,13 +325,13 @@ Nivel2:function()
     }
 
   }else {
-    Materialize.toast('NIVEL CONCLUIDO', 3000, 'red')
+  //  Materialize.toast('NIVEL CONCLUIDO', 3000, 'red')
   }
 },
 
 Nivel3:function()
 {
-  
+
   if (nivel==3) {
     if (sNivel==5) {
       this.state.start('Juego1_5');
@@ -279,18 +342,31 @@ Nivel3:function()
     }
 
   }else {
-    Materialize.toast('NIVEL CONCLUIDO', 3000, 'red')
+  //  Materialize.toast('NIVEL CONCLUIDO', 3000, 'red')
   }
 },
 
 Nivel4:function()
 {
-  alert("hola soy 4");
+ if (nivel==4) {
+   if (sNivel==7) {
+     this.state.start('Juego1_7');
+
+   }
+
+ }
+
+
 },
 
 Nivel5:function()
 {
-  alert("hola soy 5");
+  if (nivel==5) {
+    if (sNivel==9) {
+      this.state.start('Juego1_8');
+    }
+
+  }
 },
 
 

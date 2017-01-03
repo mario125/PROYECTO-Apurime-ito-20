@@ -51,7 +51,11 @@ var Juego1_5={
   },
   create:function()
   {
-alert("Juego1_5");
+    //alert("Juego1_5");
+    t1 = juego.add.text(20, 2, "0", {font: "15px Arial", fill: "#000000"});
+    t2 = juego.add.text(100, 2, "0", {font: "15px Arial", fill: "#000000"});
+    t1.text='NIVEL: 3';
+    t2.text='SUBNIVEL: 5';
               juego.physics.startSystem(Phaser.Physics.ARCADE);
 //--------------------------------------CHOLITO---------------------------------------------------------
                C_cholito=juego.add.sprite(50,205,' C_cholito');
@@ -72,7 +76,7 @@ alert("Juego1_5");
                b_home=this.add.button(b_siguiente.position.x+64,ye,'b_home',this.Home,this);
                b_actualizar=this.add.button(b_home.position.x+64,ye,'b_actualizar',this.Actualizar,this);
                cholito_negro=juego.add.tileSprite(juego.width-400,ye,64,64,'cholito_negro');
-               scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+10,300,40,'scroolBar');
+               scroolBar=juego.add.tileSprite(cholito_negro.position.x+50,ye+10,300,40,'scroolBar6');
 
                b_atras.scale.setTo(0.8,0.8);
                b_siguiente.scale.setTo(0.8,0.8);
@@ -136,6 +140,14 @@ alert("Juego1_5");
                                    C_item.events.onDragStop.add(this.fixLocation);   // Limitar la ubicación a solo las 2 columnas.
                }
 
+  },
+  Actualizar:function()
+  {
+    C_actualis=1;
+    this.state.start('Actualis');
+  },
+  Home:function(){
+  //    this.state.start('Nivel');
   },
 
   fixLocation:function( C_item)

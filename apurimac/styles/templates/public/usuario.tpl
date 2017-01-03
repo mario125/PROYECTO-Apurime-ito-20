@@ -23,10 +23,18 @@
    <script src="styles/jsgame/juego1_4.js"     type="text/javascript"></script>
    <script src="styles/jsgame/juego1_5.js"     type="text/javascript"></script>
    <script src="styles/jsgame/juego1_6.js"     type="text/javascript"></script>
+   <script src="styles/jsgame/juego1_7.js"     type="text/javascript"></script>
+   <script src="styles/jsgame/Juego1_8.js"     type="text/javascript"></script>
    <script src="styles/jsgame/Actualis.js"     type="text/javascript"></script>
+
+
+
+
+
 
    <!--<script src="styles/jsgame/juego1_1.js"     type="text/javascript"></script>
    <script src="styles/jsgame/juego1_2.js"     type="text/javascript"></script>
+
 
 
 

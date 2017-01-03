@@ -94,36 +94,32 @@ class Acceso{
     {
 
       try{
-          require('core/models/class.Conexion.php');
+          //require('core/models/class.Conexion.php');
 
           if(!empty($_POST['nombres']) and !empty($_POST['apellidos']) and !empty($_POST['sexo'])and !empty($_POST['cargo'])and !empty($_POST['nick'])and !empty($_POST['password']))
           {
               $db = new Conexion();
+               $fecha_actual = date('Y-m-d');
                $this->nombres =$db->real_escape_string($_POST['nombres']);
                $this->apellidos =$db->real_escape_string($_POST['apellidos']);
                $this->sexo =$db->real_escape_string($_POST['sexo']);
                $this->cargo =$db->real_escape_string($_POST['cargo']);
                $this->nick =$db->real_escape_string($_POST['nick']);
                $this->password =$db->real_escape_string($_POST['password']);
+               $this->fecha =$db->real_escape_string($fecha_actual);
               //$sql = $db->query("SELECT * FROM user WHERE USER ='$this->user' and pass='$this->pass'");
               $sql  = $db->query("SELECT id , nick,apellidos,nombres FROM usuario WHERE nick ='$this->nick'or apellidos='$this->apellidos' or nombres='$this->nombres'");
 
               if($db-> rows($sql)==0){
-               $sql2 = $db->query("INSERT INTO usuario(nombres, apellidos, sexo, nick, password, cargo) VALUES ('$this->nombres','$this->apellidos','$this->sexo','$this->nick','$this->password','$this->cargo')");
+              $sql2 = $db->query("INSERT INTO usuario(nombres, apellidos, sexo, nick, password, cargo) VALUES ('$this->nombres','$this->apellidos','$this->sexo','$this->nick','$this->password','$this->cargo')");
+              $sql3 = $db->query("SELECT MAX(id) AS id FROM usuario");
+              $id = $db->rrecorrer($sql3);
+              $sql4 =$db->query("INSERT INTO game (jugador, inicio, fin, nivel, sNivel) VALUES ($id[0],'$this->fecha','$this->fecha',0,0)");
 
 
+              echo 1;
+              $db->liberar($sql2,$sql3,$sql4);
 
-                  //$_SESSION['id'] = $datos['id'];
-                  //$_SESSION['nombres'] = $datos['nombres'];
-                  //$_SESSION['apellidos'] = $datos['apellidos'];
-                  //$_SESSION['sexo'] = $datos['sexo'];
-                  //$_SESSION['nik'] = $datos['nik'];
-                  //$_SESSION['password'] = $datos['password'];
-                  //$_SESSION['cargo'] = $datos['cargo'];
-
-
-                  echo 1;
-                  $db->liberar($sql,$sql2);
               }else{
                   $datos = $db->rrecorrer($sql);
                   if (strtolower($this->nombres) == strtolower($datos['nombres']) && strtolower($this->apellidos) == strtolower($datos['apellidos'])) {

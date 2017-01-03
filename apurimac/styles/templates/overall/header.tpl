@@ -16,4 +16,15 @@
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
 
 
+
+    
+
+
+    <style media="screen">
+      body{
+        background-color: rgb(255, 255, 255);
+      }
+    </style>
+
+
   </head>

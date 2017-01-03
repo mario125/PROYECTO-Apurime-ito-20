@@ -11,6 +11,7 @@ class Conexion extends mysqli{
     public function rows($x){
         return mysqli_num_rows($x);
 
+
     }
     public function rrecorrer($x){
         return mysqli_fetch_array($x);

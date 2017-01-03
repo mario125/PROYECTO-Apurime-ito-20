@@ -1,5 +1,5 @@
-var    scrollBarCircle;
-var    Actualis={
+var      scrollBarCircle;
+var      Actualis={
   preload:function()
   {
       juego.load.spritesheet('scrollBarCircle','styles/imagesgame/barras/scrollbar.png',200,200);
@@ -13,7 +13,7 @@ var    Actualis={
   },
   update:function()
   {
-    //  alert(S_actualis);
+    //  alert(O_actualis);
       time = juego.time.events.loop(2500, this.clasCargar, this);
       time = juego.time.events.loop(100,this.classScroll,this);
       //_____________________juego1_1__________________________________
@@ -147,6 +147,7 @@ var    Actualis={
         S_seis =0;
         S_siete =0;
         S_ocho =0;
+        S_nueve=0;
         S_pulsacion=0;
         S_suma=0;
         S_parar2=0;
@@ -155,6 +156,75 @@ var    Actualis={
         S_espacio_piso2=0;
         S_espacio_piso1=0;
       //______________________juego1_7___________________________________
+        G_base=0;
+        G_j=300;
+        G_text = '';
+        G_separacion=50;
+        G_variables1;
+        G_variables2;
+        G_uno =0;
+        G_resul=0;
+        G_basepri=0
+        G_basePrimal;
+        G_pulsador=0;
+        G_base2;
+        G_base4;
+        G_piso1;
+        G_piso2;
+        G_time;
+        G_espacio_piso1=0;
+        G_espacio_piso2=0;
+        G_parar1=0;
+        G_parar2=0;
+        G_mal_bien=0;
+        G_check;
+        G_cruz;
+        G_cholito;
+        G_globo;
+        G_pasar=0;
+
+
+      //______________________juego1_8___________________________________
+        O_base=0;
+        O_j=300;
+        O_text = '';
+        O_separacion=20;
+        O_variables1;
+        O_variables2;
+        O_variables3;
+        O_variables4;
+
+        O_uno =0;
+        O_resul=0;
+        O_basepri=0
+        O_basePrimal;
+        O_pulsador=0;
+        O_base2;
+        O_base4;
+        O_piso1;
+        O_piso2;
+        O_time;
+        O_espacio_piso1=0;
+        O_espacio_piso2=0;
+        O_parar1=0;
+        O_parar2=0;
+        O_mal_bien=0;
+        O_check;
+        O_cruz;
+        O_cholito;
+        O_globo;
+        O_pasar=0;
+
+        O_base6 ;
+        O_base9 ;
+        O_base12 ;
+        O_base15 ;
+
+        O_base8 ;
+        O_base12 ;
+        O_base16 ;
+        O_base20 ;
+
 
 
 
@@ -192,6 +262,16 @@ clasCargar:function()
   if (S_actualis==1) {
     this.state.start('Juego1_6');
     S_actualis=0;
+
+  }
+  if (G_actualis==1) {
+    this.state.start('Juego1_7');
+    G_actualis=0;
+
+  }
+  if (O_actualis==1) {
+      this.state.start('Juego1_8');
+      O_actualis=0;
 
   }
 

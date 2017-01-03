@@ -18,7 +18,7 @@ while (i--) {
 }
 
 //mostrará el nombre 2 veces
-var nivel=nivel;
+var ni=nivel;
 var jugador=jugador;
 var sNivel=sNivel;
 var Actualis1=0;
@@ -26,13 +26,11 @@ var M_actualis=0;
 var K_actualis=0;
 var T_actualis=0;
 var C_actualis=0;
+var G_actualis=0;
 var S_actualis=0;
+var O_actualis=0;
+
 var puntoDB =nivel;
-
-
-
-
-
 
 var juego = new Phaser.Game(900,600,Phaser.CANVAS,'bloque_juego');
 juego.state.add('Menu',Menu);
@@ -44,5 +42,12 @@ juego.state.add('Juego1_3',Juego1_3);
 juego.state.add('Juego1_4',Juego1_4);
 juego.state.add('Juego1_5',Juego1_5);
 juego.state.add('Juego1_6',Juego1_6);
+juego.state.add('Juego1_7',Juego1_7);
+juego.state.add('Juego1_8',Juego1_8);
+
+//var game = new Phaser.Game(1200, 800, Phaser.CANVAS, 'game');
+
+
+
 //juego.state.add('Game_Over',Game_Over);
 juego.state.start('Menu');

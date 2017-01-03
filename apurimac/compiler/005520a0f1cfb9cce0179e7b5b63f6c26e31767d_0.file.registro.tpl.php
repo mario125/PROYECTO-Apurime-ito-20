@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2016-12-28 09:43:05
+<?php /* Smarty version 3.1.27, created on 2017-01-03 03:18:19
          compiled from "C:\xampp\htdocs\apurimac\styles\templates\public\registro.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:1709758637b19e47176_96078848%%*/
+/*%%SmartyHeaderCode:10420586b09eb4f8809_04371618%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,20 +9,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '005520a0f1cfb9cce0179e7b5b63f6c26e31767d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\apurimac\\styles\\templates\\public\\registro.tpl',
-      1 => 1482914568,
+      1 => 1483407944,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1709758637b19e47176_96078848',
+  'nocache_hash' => '10420586b09eb4f8809_04371618',
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_58637b19eb5f04_98403166',
+  'unifunc' => 'content_586b09eb5764d5_21710474',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_58637b19eb5f04_98403166')) {
-function content_58637b19eb5f04_98403166 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_586b09eb5764d5_21710474')) {
+function content_586b09eb5764d5_21710474 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '1709758637b19e47176_96078848';
+$_smarty_tpl->properties['nocache_hash'] = '10420586b09eb4f8809_04371618';
 echo $_smarty_tpl->getSubTemplate ('overall/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
@@ -144,13 +144,13 @@ echo $_smarty_tpl->getSubTemplate ('overall/header.tpl', $_smarty_tpl->cache_id,
 
 
         connect = window.XMLHttpRequest ? new XMLHttpRequest() :  ActiveXObject('Microsoft.XMLHTTP');
-       alert(nombres+apellidos+sexo+cargo+usuario+password);
+       //alert(nombres+apellidos+sexo+cargo+usuario+password);
 
         if(nombres!=''&&apellidos!=''&&sexo!=''&&cargo!=''&&nick!=''&&password!='')
         {
             connect.onreadystatechange =function(){
             if(connect.readyState==4&&connect.status==200){
-                alert(connect.responseText);
+              //  alert(connect.responseText);
                 if(parseInt(connect.responseText) ==1){
 
                     //conecatado con exito
