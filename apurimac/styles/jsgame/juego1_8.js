@@ -126,7 +126,7 @@ var Juego1_8 = {
                    O_variables2 = juego.add.sprite((juego.height/2)-100 + (70 * 2), 150 + (2*6), 'O_block');
                    O_variables3 = juego.add.sprite((juego.height/2)-100 + (70 * 3), 150 + (3*6), 'O_block');
                    O_basepri =Math.floor(Math.random() * (5 -1)) + 1;
-                   alert("DATO:"+O_basepri);
+                   //alert("DATO:"+O_basepri);
                    if (O_basepri==1) {
                       O_resul=6;
                       O_basePrimal=juego.add.tileSprite(300,(barra_menu.position.y)-75,300,75,'O_base6');
@@ -283,6 +283,11 @@ var Juego1_8 = {
 
 
 
+    },
+    Actualizar:function()
+    {
+      O_actualis=1;
+      this.state.start('Actualis');
     },
      clickedSprite:function (O_item) {
        if (O_pulsador==0)

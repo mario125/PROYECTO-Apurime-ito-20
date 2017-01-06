@@ -254,6 +254,11 @@ var Juego1_7 = {
 
 
     },
+    Actualizar:function()
+    {
+      G_actualis=1;
+      this.state.start('Actualis');
+    },
      clickedSprite:function (G_item) {
        if (G_pulsador==0)
        {
