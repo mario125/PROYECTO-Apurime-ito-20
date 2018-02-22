@@ -87,7 +87,7 @@ INSERT INTO `usuario` (`id`, `nombres`, `apellidos`, `sexo`, `nick`, `password`,
 (1, 'mario', 'choquetaipe asto', 'm', 'mario', '1', 1),
 (2, 'daniel', 'santos barrientos', 'm', 'dani', '3', 1),
 (3, 'panchito', 'gomer paul ', 'm', 'panchito', '3', 2),
-(4, 'karen', 'suarez alvarez', 'f', 'karen', '2', 2);
+
 
 --
 -- Índices para tablas volcadas
